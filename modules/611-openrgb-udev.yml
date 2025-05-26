@@ -1,0 +1,5 @@
+name: add-openrgb-udev
+type: shell
+commands:
+  - wget https://openrgb.org/releases/release_0.9/60-openrgb.rules
+  - mv 60-openrgb.rules /etc/udev/rules.d/

@@ -1,0 +1,9 @@
+name: gamescope
+type: apt
+sources:
+  - packages:
+    - gamescope
+    - mangohud
+    - mangohudctl
+    - mangoapp
+

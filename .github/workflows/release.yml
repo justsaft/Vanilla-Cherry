@@ -17,14 +17,14 @@ jobs:
       contents: write # Allow actions to create release
       attestations: write # To create and write attestations
       id-token: write # Additional permissions for the persistence of the attestations
-    
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - uses: vanilla-os/vib-gh-action@v0.8.1
+      - uses: vanilla-os/vib-gh-action@v1.0.2
         with:
             recipe: 'recipe.yml'
             plugins: 'Vanilla-OS/vib-fsguard:v1.5.3'

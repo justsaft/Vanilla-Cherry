@@ -1,0 +1,5 @@
+name: pautils
+type: apt
+sources:
+  - packages:
+    - pulseaudio-utils
