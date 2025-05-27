@@ -5,7 +5,7 @@
     "registry": "ghcr.io",
     "registryService": "registry.ghcr.io",
     "registryAPIVersion": "v2",
-    "name": "changed_automatically_by_vib",
+    "name": "justsaft/vanilla-cherry",
     "tag": "main",
 
     "iPkgMngPre": "lpkg --unlock",

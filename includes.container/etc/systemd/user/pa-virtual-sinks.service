@@ -4,7 +4,7 @@ Description=Create virtual audio sinks for PipeWire
 After=pipewire.service
 
 [Service]
-ExecStart=/etc/pa-virtual-sinks/create_sinks.sh
+ExecStart=/etc/pa-virtual-sinks/create_pa_sinks.sh
 RemainAfterExit=true
 
 [Install]
