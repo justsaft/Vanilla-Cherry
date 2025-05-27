@@ -22,11 +22,6 @@ stages:
     - lpkg --unlock
     - apt-get update
 
-  - name: set-image-name-abroot
-    type: includes
-    includes:
-      - modules/80-set-image-abroot-config.yml
-
   - name: audio-utils
     type: includes
     includes:
