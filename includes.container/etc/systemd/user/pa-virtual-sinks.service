@@ -2,6 +2,8 @@
 [Unit]
 Description=Create virtual audio sinks for PipeWire
 After=pipewire-pulse.service
+Requires=pipewire-pulse.service
+Restart=no
 
 [Service]
 ExecStart=/etc/pa-virtual-sinks/create_pa_sinks.sh
