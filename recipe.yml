@@ -22,15 +22,11 @@ stages:
     - lpkg --unlock
     - apt-get update
 
-  - name: audio-utils
+  - name: mystuff
     type: includes
     includes:
-      - modules/600-audio-utils.yml
-
-  - name: other-utils
-    type: includes
-    includes:
-      - modules/611-openrgb-udev.yml
+      - modules/600-utils.yml
+      - modules/610-openrgb-udev.yml
 
   - name: cleanup
     type: shell
