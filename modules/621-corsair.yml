@@ -1,5 +1,5 @@
 name: corsair-stuff
 type: apt
-sources:
-  - packages:
+source:
+  packages:
     - ckb-next

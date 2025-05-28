@@ -1,6 +1,6 @@
 name: vanilla-cherry
 id: vanilla-cherry
-vibversion: 1.0.2
+# vibversion: 1.0.2
 
 stages:
 - id: build

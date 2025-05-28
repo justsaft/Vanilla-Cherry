@@ -1,6 +1,6 @@
 name: utils
 type: apt
-sources:
-  - packages:
+source:
+  packages:
     - pulseaudio-utils
     - usbutils
