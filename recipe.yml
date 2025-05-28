@@ -27,6 +27,7 @@ stages:
     includes:
       - modules/600-utils.yml
       - modules/610-openrgb-udev.yml
+      - modules/621-corsair.yml
 
   - name: cleanup
     type: shell
