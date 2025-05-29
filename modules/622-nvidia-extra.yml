@@ -1,0 +1,5 @@
+name: nvidia-stuff
+type: apt
+source:
+  packages:
+    - libxnvctrl0
