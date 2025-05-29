@@ -2,5 +2,4 @@ name: utils
 type: apt
 source:
   packages:
-    - pulseaudio-utils
     - usbutils
