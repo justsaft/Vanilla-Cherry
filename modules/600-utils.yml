@@ -2,4 +2,8 @@ name: utils
 type: apt
 source:
   packages:
+    - pulseaudio-utils
     - usbutils
+
+
+# pulseaudio-utils is needed for the Audio quick settings panel GS extension
