@@ -4,7 +4,9 @@ id: vanilla-cherry
 
 stages:
 - id: build
-  base: ghcr.io/vanilla-os/nvidia-exp:main
+  # base: ghcr.io/vanilla-os/nvidia-exp:main
+  # addincludes: true
+  base: ghcr.io/vanilla-os/nvidia-exp:v1.2.1
   singlelayer: false
   labels:
     maintainer: self-maintained # Optionally, Replace this with your name
