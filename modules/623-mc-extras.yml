@@ -1,0 +1,10 @@
+name: minecraft-stuff
+type: apt
+source:
+  packages:
+    - libglfw3
+    - libglfw3-wayland
+    - libopenal1
+
+# A few extra libs that PrismLauncher (alternate launcher for Minecraft)
+# can use instead of its bundled ones
