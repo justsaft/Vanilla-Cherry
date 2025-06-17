@@ -6,4 +6,7 @@ source:
     - mangohud
     - mangohudctl
     - mangoapp
+    - libgamemode0
+    - libgamemodeauto0
+    - gnome-shell-extension-gamemode
 

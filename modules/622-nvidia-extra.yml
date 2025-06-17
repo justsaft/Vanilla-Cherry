@@ -1,9 +1,14 @@
 name: nvidia-stuff
-type: apt
-source:
-  packages:
-    - libxnvctrl0
+type: shell
+commands:
+  - apt-mark hold cuda-drivers
+modules:
+  type: apt
+  source:
+    packages:
+      - cuda-drivers
 
+#- libxnvctrl0
 # Used to be nessesary for:
 # - Addition: `libxnvctrl0` for NVIDIA GPU overclocking¹ ([GreenWithEnvy](https://gitlab.com/leinardi/gwe))
 # NVIDIA has integrated overclocking into their mainline driver

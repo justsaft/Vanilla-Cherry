@@ -9,7 +9,7 @@ stages:
   base: ghcr.io/vanilla-os/nvidia-exp:main
   singlelayer: false
   labels:
-    maintainer: self-maintained # Optionally, Replace this with your name
+    maintainer: JustSaft
   args:
     DEBIAN_FRONTEND: noninteractive # Set the image environment as non-interactive
 
@@ -29,6 +29,8 @@ stages:
     includes:
       - modules/600-utils.yml
       - modules/610-openrgb-udev.yml
+      - modules/620-gaming.yml
+      - modules/622-nvidia-extra.yml
       - modules/623-mc-extras.yml
 
   - name: cleanup
