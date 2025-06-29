@@ -2,12 +2,14 @@ name: nvidia-stuff
 type: shell
 commands:
   - apt-mark hold cuda-drivers
+
 modules:
-  - name: nvidia-cuda-drivers
+  - name: nvidia-extra-stuff
     type: apt
     source:
       packages:
         - cuda-drivers
+        - firmware-nvidia-graphics
 
 #- libxnvctrl0
 # Used to be nessesary for:
