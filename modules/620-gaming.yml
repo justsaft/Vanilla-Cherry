@@ -1,4 +1,4 @@
-name: gamescope
+name: gaming-stuff
 type: apt
 source:
   packages:
@@ -6,7 +6,6 @@ source:
     - mangohud
     - mangohudctl
     - mangoapp
+    - gamemode
     - libgamemode0
     - libgamemodeauto0
-    - gnome-shell-extension-gamemode
-
