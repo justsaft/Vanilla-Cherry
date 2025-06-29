@@ -5,6 +5,6 @@ source:
     - pulseaudio-utils
     - usbutils
     - evremap
-
+    - openrgb
 
 # pulseaudio-utils is needed for the Audio quick settings panel GS extension
