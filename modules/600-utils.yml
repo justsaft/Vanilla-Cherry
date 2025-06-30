@@ -3,6 +3,8 @@ type: apt
 source:
   packages:
     - pulseaudio-utils
+    - pipewire-jack
+    - pipewire-alsa
     - usbutils
     - evremap
     - openrgb
