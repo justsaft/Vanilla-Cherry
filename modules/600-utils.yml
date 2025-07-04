@@ -3,10 +3,11 @@ type: apt
 source:
   packages:
     - pulseaudio-utils
+    - alsa-utils
     - pipewire-jack
     - pipewire-alsa
     - usbutils
     - evremap
-    - openrgb
+    - sshfs
 
 # pulseaudio-utils is needed for the Audio quick settings panel GS extension

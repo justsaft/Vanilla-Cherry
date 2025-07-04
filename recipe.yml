@@ -28,10 +28,11 @@ stages:
     type: includes
     includes:
       - modules/600-utils.yml
-      - modules/610-openrgb-udev.yml
       - modules/620-gaming.yml
       - modules/622-nvidia-extra.yml
       - modules/623-mc-extras.yml
+      - modules/624-openrgb.yml
+      - modules/700-gs-extension.yml
 
   - name: cleanup
     type: shell

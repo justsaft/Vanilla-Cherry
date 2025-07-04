@@ -1,0 +1,16 @@
+name: openrgb-udev-rules
+type: shell
+commands:
+  - wget https://openrgb.org/releases/release_0.9/60-openrgb.rules
+  - mv 60-openrgb.rules /usr/lib/udev/rules.d/
+
+modules:
+  - name: openrgb-install
+    type: apt
+    source:
+      packages:
+        - openrgb
+        - libi2c0
+        - libi2c-dev
+        #- i2c-piix4 # AMD Systems
+        #- i2c-i801 # Intel Systems
