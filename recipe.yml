@@ -32,7 +32,7 @@ stages:
       - modules/622-nvidia-extra.yml
       - modules/623-mc-extras.yml
       - modules/624-openrgb.yml
-      - modules/700-gs-extension.yml
+      - modules/700-gs-extensions.yml
 
   - name: cleanup
     type: shell
