@@ -6,6 +6,8 @@ source:
     - alsa-utils
     - pipewire-jack
     - pipewire-alsa
+    - pipewire-v4l2
+    - obs-pipewire-audio-capture
     - usbutils
     - evremap
     - sshfs
