@@ -4,7 +4,6 @@ source:
   packages:
     - pulseaudio-utils
     - alsa-utils
-    - pipewire-jack
     - pipewire-alsa
     - pipewire-v4l2
     - obs-pipewire-audio-capture
@@ -12,4 +11,6 @@ source:
     - evremap
     - sshfs
 
+#- jackd
+#- pipewire-jack
 # pulseaudio-utils is needed for the Audio quick settings panel GS extension
