@@ -19,16 +19,15 @@ This is and will always be my personal image, containing QoL additions over the 
   - udev rules for some USB based Elgato game capture devices (e.g. HD60 X)
 - Addition: `usbutils`
 - Addition: `evremap` for remapping keys
-- Addition: OpenRGB udev rules¹
+- Addition: OpenRGB
 - Addition: Gamescope, MangoHud, MangoApp
-- Addition: libgamemode
-- Addition: `libglfw3` and `libopenal1` for PrismLauncher³
+- Addition: `gamemode` and `libgamemode`
+- Addition: `libglfw3` and `libopenal1` for PrismLauncher²
 
 
 ### Current non-included additions:
-- Addition: Corsair drivers (`ckb-next`)²
+- Addition: Corsair drivers (`ckb-next`)¹
 
 
-¹ Note: You'll still need the [OpenRGB flatpak](https://flathub.org/apps/org.openrgb.OpenRGB)
-² Note: Currently non-working under Vanilla.
-³ Note: Technically not nessesary, the launcher bundles these itself. --> They are here for testing if performance increases.
+¹ Note: Currently non-working under Vanilla.
+² Note: Technically not nessesary, the launcher bundles these itself. --> They are here for testing if performance increases.
