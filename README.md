@@ -19,7 +19,7 @@ This is and will always be my personal image, containing QoL additions over the 
   - udev rules for some USB based Elgato game capture devices (e.g. HD60 X)
 - Addition: `usbutils`
 - Addition: `evremap` for remapping keys
-- Addition: OpenRGB
+- Addition: OpenRGB + it's needed i2c drivers
 - Addition: Gamescope, MangoHud, MangoApp
 - Addition: `gamemode` and `libgamemode`
 - Addition: `libglfw3` and `libopenal1` for PrismLauncher²
