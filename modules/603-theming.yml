@@ -1,0 +1,7 @@
+name: theming-packages
+type: apt
+source:
+  packages:
+    - gnome-tweaks
+    - gnome-themes-extra
+    #- gtk2-engines-murrine
