@@ -6,7 +6,7 @@ After=systemd-modules-load.service local-fs.target
 Restart=no
 
 [Service]
-ExecStart=/usr/share/myscripts/modprobe-i2c-drivers.sh
+ExecStart=/usr/share/cherryscripts/modprobe-i2c-drivers.sh
 RemainAfterExit=true
 
 [Install]

@@ -15,5 +15,5 @@ elif lscpu | grep -qi 'vendor id:.*intel'; then
   #echo "i2c-i801" >> /etc/modprobe-load.d/i2c.conf
   modprobe i2c-i801
 else
-  echo "Loading i2c driver for OpenRGB SMBus access: Unknown CPU vendor"
+  echo "Loading i2c driver for OpenRGB SMBus access: Unknown CPU vendor" && return 69
 fi
