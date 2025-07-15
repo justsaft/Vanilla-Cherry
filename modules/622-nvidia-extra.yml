@@ -3,7 +3,6 @@ type: apt
 source:
   packages:
     - firmware-nvidia-graphics
-    - libnvidia-fbc
     - i965-va-driver-shaders
 
 
