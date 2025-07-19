@@ -6,7 +6,7 @@ id: vanilla-cherry
 
 stages:
 - id: build
-  base: ghcr.io/vanilla-os/nvidia:main
+  base: ghcr.io/vanilla-os/nvidia-exp:main
   singlelayer: false
   labels:
     maintainer: JustSaft
@@ -28,7 +28,6 @@ stages:
     type: includes
     includes:
       - modules/600-utils.yml
-      - modules/603-theming.yml
       - modules/620-gaming.yml
       - modules/622-nvidia-extra.yml
       - modules/623-mc-extras.yml
