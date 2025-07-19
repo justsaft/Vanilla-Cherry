@@ -6,7 +6,7 @@ id: vanilla-cherry
 
 stages:
 - id: build
-  base: ghcr.io/vanilla-os/nvidia-exp:main
+  base: ghcr.io/vanilla-os/nvidia:main
   singlelayer: false
   labels:
     maintainer: JustSaft
