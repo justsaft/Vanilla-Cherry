@@ -1,11 +1,12 @@
 
 [Unit]
 Description=Load I2C module for motherboard SMBus access for OpenRGB
-Requires=systemd-modules-load.service
-After=systemd-modules-load.service local-fs.target
-Restart=no
+Requires=local-fs.target
+After=local-fs.target
 
 [Service]
+Type=oneshot
+Restart=no
 ExecStart=/usr/share/cherryscripts/modprobe-i2c-drivers.sh
 RemainAfterExit=true
 
