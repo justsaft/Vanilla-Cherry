@@ -1,0 +1,14 @@
+
+[Unit]
+Description=Create extra virtual audio sinks
+Requires=pipewire-pulse.service sound.target
+After=pipewire-pulse.service sound.target
+
+[Service]
+Type=oneshot
+Restart=no
+ExecStart=/usr/share/cherryscripts/extra-virtual-sinks.sh
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target
