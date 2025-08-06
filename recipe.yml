@@ -28,6 +28,7 @@ stages:
     type: includes
     includes:
       - modules/600-utils.yml
+      - modules/604-evremap.yml
       - modules/620-gaming.yml
       - modules/622-nvidia-extra.yml
       - modules/623-mc-extras.yml
