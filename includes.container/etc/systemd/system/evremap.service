@@ -1,0 +1,13 @@
+[Unit]
+Description=keyboard input remap daemon
+Documentation=man:evremap(1)
+After=local-fs.target
+ConditionPathExists=/etc/evremap.toml
+
+[Service]
+WorkingDirectory=/
+ExecStart=/usr/bin/evremap remap /etc/evremap.toml -d 0
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

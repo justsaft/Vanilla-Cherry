@@ -1,0 +1,12 @@
+name: utils
+type: apt
+commands:
+  - rm /usr/lib/systemd/system/evremap.service
+  - rm /etc/systemd/system/multi-user.target.wants/evremap.service
+
+modules:
+  name: utils-evremap-install
+  type: apt
+  source:
+    packages:
+      - evremap

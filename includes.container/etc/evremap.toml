@@ -1,0 +1,11 @@
+
+# device_name = "AT Translated Set 2 keyboard"
+# This is supposed to be set per machine on the systemd unit, or here I guess
+
+[[remap]]
+input = ["KEY_CAPSLOCK"]
+output = ["KEY_BACKSPACE"]
+
+[[remap]]
+input = ["KEY_RIGHTSHIFT", "KEY_CAPSLOCK"]
+output = ["KEY_CAPSLOCK"]
