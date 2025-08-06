@@ -1,8 +1,8 @@
 
 [Unit]
 Description=Create extra virtual audio sinks
-Requires=pipewire-pulse.service sound.target
-After=pipewire-pulse.service sound.target
+Requires=pipewire-pulse.service graphical-session.target
+After=pipewire-pulse.service graphical-session.target
 
 [Service]
 Type=oneshot
