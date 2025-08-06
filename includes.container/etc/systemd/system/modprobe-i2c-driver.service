@@ -1,8 +1,8 @@
 
 [Unit]
 Description=Load I2C module for motherboard SMBus access for OpenRGB
-Requires=graphical-session.target
-After=graphical-session.target
+Requires=local-fs.target
+After=local-fs
 
 [Service]
 Type=oneshot
