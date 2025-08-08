@@ -1,12 +1,18 @@
-name: utils
-type: apt
+name: evremap-remove-default-service
+type: shell
 commands:
   - rm /usr/lib/systemd/system/evremap.service
   - rm /etc/systemd/system/multi-user.target.wants/evremap.service
 
 modules:
-  name: utils-evremap-install
+- name: evremap-install
   type: apt
   source:
     packages:
       - evremap
+
+# Remove the default entry for the service
+# Disable the service by default
+# -> The idea is that you specify your keyboard name
+#    in the service unit file.
+#    This is to make this per machine instead of per image
