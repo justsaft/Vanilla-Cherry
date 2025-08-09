@@ -5,7 +5,6 @@ Requires=pipewire-pulse.service graphical-session.target
 After=pipewire-pulse.service graphical-session.target
 
 [Service]
-Type=oneshot
 Restart=no
 ExecStart=/usr/share/cherryscripts/extra-virtual-sinks.sh
 RemainAfterExit=true
