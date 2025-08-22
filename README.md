@@ -22,7 +22,6 @@ This is and will always be my personal image, containing QoL additions over the 
 - Addition: OpenRGB + it's needed i2c drivers
 - Addition: Gamescope, MangoHud, MangoApp
 - Addition: `gamemode` and `libgamemode`
-- Addition: `libglfw3` and `libopenal1` for PrismLauncher²
 
 
 ### Current non-included additions:
@@ -30,4 +29,3 @@ This is and will always be my personal image, containing QoL additions over the 
 
 
 ¹ Note: Currently non-working under Vanilla.
-² Note: Technically not nessesary, the launcher bundles these itself. --> They are here for testing if performance increases.
