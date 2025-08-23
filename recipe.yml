@@ -6,7 +6,7 @@ id: vanilla-cherry
 
 stages:
 - id: build
-  base: ghcr.io/vanilla-os/nvidia-exp:main
+  base: ghcr.io/vanilla-os/desktop:main
   singlelayer: false
   labels:
     maintainer: JustSaft
@@ -27,6 +27,8 @@ stages:
   - name: mystuff
     type: includes
     includes:
+      - gh:vanilla-os/nvidia-exp-image:dev:modules/50-nvidia-driver-install.yml
+      - gh:vanilla-os/nvidia-exp-image:dev:modules/51-nvidia-systemd-units.yml
       - modules/600-utils.yml
       - modules/604-evremap.yml
       - modules/620-gaming.yml
