@@ -7,8 +7,8 @@ commands:
 modules:
 - name: evremap-install
   type: apt
-  source:
-    packages:
+  sources:
+    - packages:
       - evremap
 
 # Remove the default entry for the service

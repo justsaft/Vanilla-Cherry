@@ -1,7 +1,7 @@
 name: openrgb-install
 type: apt
-source:
-  packages:
+sources:
+  - packages:
     - openrgb
     - i2c-tools
 

@@ -1,13 +1,12 @@
 name: vanilla-cherry
 id: vanilla-cherry
-# vibversion: 1.0.2
-# addincludes: true
-# base: ghcr.io/vanilla-os/nvidia-exp:v1.2.1
+vibversion: 1.0.2
 
 stages:
 - id: build
   base: ghcr.io/vanilla-os/desktop:main
   singlelayer: false
+  addincludes: true
   labels:
     maintainer: JustSaft
   args:
@@ -21,27 +20,28 @@ stages:
   - name: init-setup
     type: shell
     commands:
-    - lpkg --unlock
-    - apt-get update
+      - lpkg --unlock
+      - apt-get update
 
   - name: mystuff
     type: includes
     includes:
-      - gh:vanilla-os/nvidia-exp-image:dev:modules/50-nvidia-driver-install.yml
-      - gh:vanilla-os/nvidia-exp-image:dev:modules/51-nvidia-systemd-units.yml
+      - modules/50-nvidia-driver-install.yml
+      - modules/51-nvidia-systemd-units.yml
+      - modules/52-nvidia-cleanup.yml
       - modules/600-utils.yml
       - modules/604-evremap.yml
       - modules/620-gaming.yml
-      - modules/622-nvidia-extra.yml
       - modules/624-openrgb.yml
       - modules/700-gs-extensions.yml
 
   - name: cleanup
     type: shell
     commands:
-    - apt-get autoremove -y
-    - apt-get clean
-    - lpkg --lock
+      - SUDO_FORCE_REMOVE=yes apt purge -y sudo
+      - apt-get autoremove -y
+      - apt-get clean
+      - lpkg --lock
 
   - name: fsguard
     type: fsguard

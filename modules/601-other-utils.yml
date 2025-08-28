@@ -1,6 +1,0 @@
-name: other-utils
-type: apt
-source:
-  packages:
-    - testdisk
-    - openrgb

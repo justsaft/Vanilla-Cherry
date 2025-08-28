@@ -1,7 +1,7 @@
 name: gs-extensions
 type: apt
-source:
-  packages:
+sources:
+  - packages:
     - gnome-shell-extension-appindicator
     - gnome-shell-extension-dashtodock
     - gnome-shell-extension-gamemode
