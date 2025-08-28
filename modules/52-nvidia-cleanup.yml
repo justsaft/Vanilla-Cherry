@@ -13,8 +13,8 @@ modules:
     checksum: 0e1d92d9c9154f9a115e97b40ff692afa52ddd0d9f770a8ec67440bf1a48aa72
   commands:
     - mkdir -p /usr/bin
-    - cp /sources/vanilla-tools/vanilla-tools/nrun /usr/bin/nrun
-    - cp /sources/vanilla-tools/vanilla-tools/prime-switch /usr/bin/prime-switch
+    - cp /sources/vanilla-tools/vanilla-tools/vanilla-tools/nrun /usr/bin/nrun
+    - cp /sources/vanilla-tools/vanilla-tools/vanilla-tools/prime-switch /usr/bin/prime-switch
     - chmod +x /usr/bin/nrun
     - chmod +x /usr/bin/prime-switch
 
