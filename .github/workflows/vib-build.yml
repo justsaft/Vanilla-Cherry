@@ -25,7 +25,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Install dependencies
         run: sudo apt-get install -y jq skopeo libfyaml-utils
@@ -109,7 +109,7 @@ jobs:
       id-token: write # Additional permissions for the persistence of the attestations
 
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v6
 
     - uses: vanilla-os/vib-gh-action@v1.0.2
       with:
