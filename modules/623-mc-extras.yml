@@ -1,7 +1,7 @@
 name: minecraft-stuff
 type: apt
-source:
-  packages:
+sources:
+  - packages:
     - libglfw3
     - libglfw3-wayland
     - libopenal1
