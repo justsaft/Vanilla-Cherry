@@ -33,6 +33,7 @@ stages:
       - modules/604-evremap.yml
       - modules/620-gaming.yml
       - modules/624-openrgb.yml
+      - modules/625-syncthing.yml
       - modules/700-gs-extensions.yml
 
   - name: cleanup
