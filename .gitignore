@@ -3,3 +3,6 @@ Containerfile
 downloads/*
 plugins/*
 sources/*
+
+**/.DS_Store
+**/._*
