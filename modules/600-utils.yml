@@ -11,6 +11,7 @@ sources:
     - usbutils
     - sshfs
     - i965-va-driver-shaders
+    - syncthing
     #- testdisk
     #- lsp-plugins-ladspa
 
