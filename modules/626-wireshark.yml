@@ -1,0 +1,15 @@
+name: wireshark-post-setup
+type: shell
+commands:
+  - setcap cap_net_raw,cap_net_admin=ep /usr/bin/tcpdump
+  - setcap cap_net_raw,cap_net_admin=ep /usr/bin/pcapdump
+  - setcap cap_net_raw,cap_net_admin=ep /usr/bin/dumpcap
+
+modules:
+- name: wireshark-install
+  type: apt
+  sources:
+    - packages:
+      - wireshark
+      - tcpdump
+      - pcaputils
