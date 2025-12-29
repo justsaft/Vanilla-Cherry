@@ -2,17 +2,10 @@ name: utils
 type: apt
 sources:
   - packages:
-    - pulseaudio-utils
-    - alsa-utils
-    - pipewire-alsa
-    - pipewire-v4l2
-    - pipewire-jack
-    - jackd2
     - usbutils
     - sshfs
     - i965-va-driver-shaders
     - syncthing
     #- testdisk
-    #- lsp-plugins-ladspa
 
 # pulseaudio-utils is needed for the Audio quick settings panel GS extension

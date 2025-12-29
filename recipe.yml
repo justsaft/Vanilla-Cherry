@@ -30,6 +30,7 @@ stages:
       - modules/51-nvidia-systemd-units.yml
       - modules/52-nvidia-cleanup.yml
       - modules/600-utils.yml
+      - modules/601-audio.yml
       - modules/604-evremap.yml
       - modules/620-gaming.yml
       - modules/624-openrgb.yml

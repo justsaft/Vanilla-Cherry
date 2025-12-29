@@ -1,0 +1,15 @@
+name: utils
+type: apt
+sources:
+  - packages:
+    - pulseaudio-utils
+    - alsa-utils
+    - pipewire-alsa
+    - pipewire-v4l2
+    - pipewire-jack
+    - jackd2
+    - lsp-plugins
+    - lsp-plugins-ladspa
+    - lsp-plugins-vst3
+    - lsp-plugins-lv2
+    - lsp-plugins-vst
