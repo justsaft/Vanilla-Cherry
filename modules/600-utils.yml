@@ -6,6 +6,7 @@ sources:
     - sshfs
     - i965-va-driver-shaders
     - syncthing
+    - linux-perf
     #- testdisk
 
 # pulseaudio-utils is needed for the Audio quick settings panel GS extension
