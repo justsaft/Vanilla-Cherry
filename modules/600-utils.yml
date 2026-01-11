@@ -4,7 +4,6 @@ sources:
   - packages:
     - usbutils
     - sshfs
-    - i965-va-driver-shaders
     - syncthing
     - linux-perf
     #- testdisk
