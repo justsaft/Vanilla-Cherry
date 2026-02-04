@@ -6,10 +6,10 @@ sources:
     - apt-transport-https
     - ca-certificates
 
-modules:
-- name: syncthing-repo
-  type: shell
-  commands:
-    - mkdir -p /etc/apt/keyrings
-    - curl -L -o /etc/apt/keyrings/syncthing-archive-keyring.gpg https://syncthing.net/release-key.gpg
-    - echo "deb [signed-by=/etc/apt/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing stable-v2" > /etc/apt/sources.list.d/syncthing.list
+#modules:
+#- name: syncthing-repo
+#  type: shell
+#  commands:
+#    - mkdir -p /etc/apt/keyrings
+#    - curl -L -o /etc/apt/keyrings/syncthing-archive-keyring.gpg https://syncthing.net/release-key.gpg
+#    - echo "deb [signed-by=/etc/apt/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing stable-v2" > /etc/apt/sources.list.d/syncthing.list
