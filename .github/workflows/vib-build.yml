@@ -111,7 +111,7 @@ jobs:
     steps:
     - uses: actions/checkout@v6
 
-    - uses: vanilla-os/vib-gh-action@v1.0.2
+    - uses: vanilla-os/vib-gh-action@v1.0.7
       with:
         recipe: 'recipe.yml'
         plugins: 'Vanilla-OS/vib-fsguard:v1.6.1'
