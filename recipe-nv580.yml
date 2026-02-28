@@ -63,4 +63,3 @@ stages:
     commands:
       - rm -rf /tmp/*
       - rm -rf /var/tmp/*
-      - rm -rf /sources
