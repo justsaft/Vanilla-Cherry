@@ -1,5 +1,5 @@
 # Ignore Vib directories
-Containerfile
+Containerfile*
 downloads/*
 plugins/*
 sources/*

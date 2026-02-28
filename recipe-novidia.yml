@@ -1,5 +1,5 @@
-name: vanilla-cherry
-id: vanilla-cherry
+name: vanilla-cherry-novidia
+id: vanilla-cherry-novidia
 vibversion: 1.0.7
 
 stages:
@@ -26,10 +26,6 @@ stages:
   - name: mystuff
     type: includes
     includes:
-      - modules/50-nvidia-driver-install.yml
-      - gh:vanilla-os/nvidia-exp-image:dev:modules/51-nvidia-systemd-units.yml
-      #- modules/51-nvidia-systemd-units.yml
-      - modules/52-nvidia-cleanup.yml
       - modules/600-utils.yml
       - modules/601-audio.yml
       - modules/604-evremap.yml

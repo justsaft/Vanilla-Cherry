@@ -1,17 +1,16 @@
 name: nvidia-official-driver
 type: shell
 commands:
-- apt-mark hold nvidia-kernel-open nvidia-driver nvidia-vaapi-driver nvidia-settings nvidia-persistenced nvidia-smi libnvidia-cfg1 libnvidia-glcore libnvidia-glvkspirv libnvidia-gpucomp libnvidia-fbc1 nvidia-container-toolkit
+- apt-mark hold nvidia-kernel-open nvidia-driver nvidia-vaapi-driver nvidia-persistenced nvidia-smi libnvidia-cfg1 libnvidia-glcore libnvidia-glvkspirv libnvidia-gpucomp libnvidia-fbc1 nvidia-container-toolkit
 
 modules:
-- name: install-nvidia
+- name: nvidia-driver-install
   type: apt
   sources:
     - packages:
       - nvidia-kernel-open
       - nvidia-driver
       - nvidia-vaapi-driver
-      - nvidia-settings
       - nvidia-persistenced
       - cuda-drivers
       - libnvidia-cfg1
@@ -20,11 +19,20 @@ modules:
       - libnvidia-gpucomp
       - libnvidia-fbc1
       - nvidia-container-toolkit
-  modules:
-    - name: nvidia-official-repo
-      type: shell
-      commands:
-      - curl -fSsL https://developer.download.nvidia.com/compute/cuda/repos/debian12/x86_64/3bf863cc.pub | gpg --dearmor -o /usr/share/keyrings/nvidia-drivers.gpg
-      - echo 'deb [signed-by=/usr/share/keyrings/nvidia-drivers.gpg] https://developer.download.nvidia.com/compute/cuda/repos/debian12/x86_64/ /' > /etc/apt/sources.list.d/nvidia-drivers.list
-      - apt-get update
 
+  modules:
+    - name: nvidia-official-repo-debian13
+      type: shell
+      sources:
+        - type: file
+          url: https://developer.download.nvidia.com/compute/cuda/repos/debian13/x86_64/cuda-keyring_1.1-1_all.deb
+          checksum: d0d4ef986a44400f9db33c600ef33a985175e7cc63d805a10e1839c7a1e78f5f
+          only-arches: [amd64]
+        - type: file
+          url: https://developer.download.nvidia.com/compute/cuda/repos/debian13/sbsa/cuda-keyring_1.1-1_all.deb
+          checksum: 022a3ec17a9f77a06882614c64b724384d5942644d30355404f74600766e8311
+          only-arches: [arm64]
+      commands:
+        - dpkg -i /sources/nvidia-official-repo/cuda-keyring_1.1-1_all.deb
+        - sed -i 's/sha1.second_preimage_resistance.*/sha1.second_preimage_resistance = 2026-12-31/' /usr/share/apt/default-sequoia.config
+        - apt-get update

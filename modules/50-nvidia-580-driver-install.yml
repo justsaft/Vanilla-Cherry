@@ -1,0 +1,39 @@
+name: nvidia-official-driver-580
+type: apt
+sources:
+  - packages:
+    - nvidia-kernel-open
+    - nvidia-driver
+    - nvidia-vaapi-driver
+    - nvidia-persistenced
+    - cuda-drivers
+    - libnvidia-cfg1
+    - libnvidia-glcore
+    - libnvidia-glvkspirv
+    - libnvidia-gpucomp
+    - libnvidia-fbc1
+    - nvidia-container-toolkit
+
+modules:
+  - name: nvidia-driver-pinning-580
+    type: apt
+    sources:
+      - packages:
+        - nvidia-driver-pinning-580
+
+    modules:
+      - name: nvidia-official-repo-debian12
+        type: shell
+        sources:
+          - type: file
+            url: https://developer.download.nvidia.com/compute/cuda/repos/debian12/x86_64/cuda-keyring_1.1-1_all.deb
+            checksum: e7f219eab6fe4819cdb5c15b98233dc3420302d9c00883219cd3d896857cf48d
+            only-arches: [amd64]
+          - type: file
+            url: https://developer.download.nvidia.com/compute/cuda/repos/debian12/sbsa/cuda-keyring_1.1-1_all.deb
+            checksum: bf2f53b1a19259501119f732bdef2699f8c80c69a18e6a78dad78d67d96766dc
+            only-arches: [arm64]
+        commands:
+          - dpkg -i /sources/nvidia-official-repo/cuda-keyring_1.1-1_all.deb
+          - sed -i 's/sha1.second_preimage_resistance.*/sha1.second_preimage_resistance = 2026-12-31/' /usr/share/apt/default-sequoia.config
+          - apt-get update

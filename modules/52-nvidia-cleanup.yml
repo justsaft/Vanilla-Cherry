@@ -1,8 +1,7 @@
 name: nvidia-cleanup
 type: shell
 commands:
-  - apt remove -y zutty gnome-shell-extension-prefs
-  - rm /etc/apt/sources.list.d/nvidia-drivers.list 
+  - rm /etc/apt/sources.list.d/nvidia-drivers.list
 
 modules:
 - name: vanilla-tools
