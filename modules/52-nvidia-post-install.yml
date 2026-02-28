@@ -1,0 +1,31 @@
+name: enable-wayland
+type: shell
+commands:
+  - mkdir -p /etc/udev/rules.d
+  - ln -s /dev/null /etc/udev/rules.d/61-gdm.rules
+
+modules:
+  - name: nvidia-extra-packages
+    type: apt
+    sources:
+      - packages:
+        - firmware-nvidia-graphics
+        - switcheroo-control
+
+  - name: vanilla-tools-prime-switch
+    type: shell
+    sources:
+      - type: tar
+        url: https://github.com/Vanilla-OS/vanilla-tools/releases/download/v1.0.1/vanilla-tools-amd64.tar.gz
+        checksum: aef32f07820e0993e534e6bccfa1a6daae6c8c6f0543d3e073f4f121f2ef2e31
+        only-arches: [amd64]
+      - type: tar
+        url: https://github.com/Vanilla-OS/vanilla-tools/releases/download/v1.0.1/vanilla-tools-arm64.tar.gz
+        checksum: e59b098338de6f6071376e07ec79b17be6c8f0a0dd354fab128e1e86a36d0862
+        only-arches: [arm64]
+    commands:
+      - mkdir -p /usr/bin
+      - cp /sources/vanilla-tools-prime-switch/vanilla-tools*/vanilla-tools/nrun /usr/bin/nrun
+      - cp /sources/vanilla-tools-prime-switch/vanilla-tools*/vanilla-tools/prime-switch /usr/bin/prime-switch
+      - chmod +x /usr/bin/nrun
+      - chmod +x /usr/bin/prime-switch

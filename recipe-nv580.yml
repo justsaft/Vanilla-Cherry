@@ -28,7 +28,7 @@ stages:
     includes:
       - modules/50-nvidia-580-driver-install.yml
       - modules/51-nvidia-systemd-units.yml
-      - modules/52-nvidia-cleanup.yml
+      - modules/52-nvidia-post-install.yml
       - modules/600-utils.yml
       - modules/601-audio.yml
       - modules/604-evremap.yml
