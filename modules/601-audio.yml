@@ -1,4 +1,4 @@
-name: utils
+name: audio-utils
 type: apt
 sources:
   - packages:
