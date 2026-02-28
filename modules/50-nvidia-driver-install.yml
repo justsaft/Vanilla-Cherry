@@ -33,6 +33,6 @@ modules:
           checksum: 022a3ec17a9f77a06882614c64b724384d5942644d30355404f74600766e8311
           only-arches: [arm64]
       commands:
-        - dpkg -i /sources/nvidia-official-repo/cuda-keyring_1.1-1_all.deb
+        - dpkg -i /sources/nvidia-official-repo-debian13/cuda-keyring_1.1-1_all/nvidia-official-repo-debian13.deb
         - sed -i 's/sha1.second_preimage_resistance.*/sha1.second_preimage_resistance = 2026-12-31/' /usr/share/apt/default-sequoia.config
         - apt-get update
