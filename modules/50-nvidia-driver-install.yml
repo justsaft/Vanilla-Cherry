@@ -1,14 +1,13 @@
 name: nvidia-official-driver
 type: shell
 commands:
-- apt-mark hold nvidia-kernel-open nvidia-driver nvidia-vaapi-driver nvidia-persistenced nvidia-smi libnvidia-cfg1 libnvidia-glcore libnvidia-glvkspirv libnvidia-gpucomp libnvidia-fbc1 nvidia-container-toolkit
+- apt-mark hold nvidia-driver nvidia-vaapi-driver nvidia-persistenced nvidia-smi libnvidia-cfg1 libnvidia-glcore libnvidia-glvkspirv libnvidia-gpucomp libnvidia-fbc1
 
 modules:
 - name: nvidia-driver-install
   type: apt
   sources:
     - packages:
-      - nvidia-kernel-open
       - nvidia-driver
       - nvidia-vaapi-driver
       - nvidia-persistenced
@@ -18,7 +17,6 @@ modules:
       - libnvidia-glvkspirv
       - libnvidia-gpucomp
       - libnvidia-fbc1
-      - nvidia-container-toolkit
 
   modules:
     - name: nvidia-official-repo-debian13
