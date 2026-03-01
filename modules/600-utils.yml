@@ -6,6 +6,8 @@ sources:
     - sshfs
     - syncthing
     - linux-perf
+    - krdc
+    - kdeconnect
     #- testdisk
 
 # pulseaudio-utils is needed for the Audio quick settings panel GS extension

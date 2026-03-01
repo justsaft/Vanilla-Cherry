@@ -5,5 +5,4 @@ sources:
     - gnome-shell-extension-appindicator
     - gnome-shell-extension-dashtodock
     - gnome-shell-extension-gamemode
-    - gnome-shell-extension-gsconnect
     - gnome-shell-extension-desktop-icons-ng
