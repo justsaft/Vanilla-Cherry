@@ -1,0 +1,4 @@
+name: cleanup-packages
+type: shell
+commands:
+  - apt-get purge -y alacritty zutty gnome-shell-extension-prefs

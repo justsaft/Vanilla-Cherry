@@ -35,6 +35,7 @@ stages:
       - modules/620-gaming.yml
       - modules/624-openrgb.yml
       - modules/700-gs-extensions.yml
+      - modules/999-cleanup.yml
 
   - name: cleanup
     type: shell
