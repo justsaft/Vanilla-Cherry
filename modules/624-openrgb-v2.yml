@@ -19,7 +19,7 @@ modules:
   sources:
     - packages:
       - i2c-tools
-      - openrgb-dkms-drivers
+      # - openrgb-dkms-drivers
       - qgnomeplatform-qt5
 
 - name: openrgb-install-plugins
