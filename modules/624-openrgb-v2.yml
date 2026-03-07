@@ -10,7 +10,8 @@ sources:
   checksum: 34a9119806ed9bb9f27c7351932e5937b0a401e1a7c7d2d9a362977d49686a53
   only-arches: [arm64]
 commands:
-  - dpkg -i /sources/openrgb-install/openrgb_1.0rc2_*_trixie_0fca93e/openrgb-install.deb
+  - mv /sources/openrgb-install/openrgb_1.0rc2_*_trixie_0fca93e/openrgb-install.deb /sources/openrgb-install/openrgb_1.0rc2.deb
+  - apt-get install -y /sources/openrgb-install/openrgb_1.0rc2.deb
 
 modules:
 - name: openrgb-install-deps
