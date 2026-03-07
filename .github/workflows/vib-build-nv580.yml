@@ -111,7 +111,7 @@ jobs:
     steps:
     - uses: actions/checkout@v6
 
-    - uses: justsaft/vib-gh-action@customized
+    - uses: justsaft/vib-gh-action:add-containerfile-input@1.1.0
       with:
         recipe: 'recipe-nv580.yml'
         plugins: 'Vanilla-OS/vib-fsguard:v1.6.1'
