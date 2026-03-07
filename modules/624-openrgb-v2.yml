@@ -19,16 +19,8 @@ modules:
   sources:
     - packages:
       - i2c-tools
-
-- name: openrgb-install-udev
-  type: shell
-  sources:
-    - type: file
-      url: https://openrgb.org/releases/release_0.9/openrgb-udev-install.sh
-      checksum: 45679c8468b61cfb94553ab248f9899592790eceaaac64636b130a8b85ea6632
-  commands:
-    - chmod +x /sources/openrgb-install-udev/openrgb-udev-install/openrgb-install-udev.sh
-    - /sources/openrgb-install-udev/openrgb-udev-install/openrgb-install-udev.sh
+      - openrgb-dkms-drivers
+      - qgnomeplatform-qt5
 
 - name: openrgb-install-plugins
   type: shell
