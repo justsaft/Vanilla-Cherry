@@ -1,4 +1,4 @@
-name: Vib Build
+name: Vib Build with NVIDIA 580 Driver
 
 on:
   push:
@@ -111,11 +111,11 @@ jobs:
     steps:
     - uses: actions/checkout@v6
 
-    - uses: justsaft/vib-gh-action:add-containerfile-input@1.1.0
+    - uses: justsaft/vib-gh-action@ee4de949185c2bd5be42993f4f327871aa1a217b
       with:
         recipe: 'recipe-nv580.yml'
         plugins: 'Vanilla-OS/vib-fsguard:v1.6.1'
-        containerfile: Containerfile-nv580
+        output: Containerfile-nv580
 
     - uses: actions/upload-artifact@v6
       with:
