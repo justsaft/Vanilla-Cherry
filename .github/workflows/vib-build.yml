@@ -1,4 +1,4 @@
-name: Vib Build
+name: 'VIB Image Build: latest NVIDIA drivers'
 
 on:
   push:
@@ -106,7 +106,7 @@ jobs:
           - runner: ubuntu-24.04-arm
             arch: arm64
     runs-on: ${{ matrix.runner }}
-    needs: verify-image
+    needs: verify_base_image check_update
     permissions:
       packages: write # Allow pushing images to GHCR
       attestations: write # To create and write attestations
@@ -115,7 +115,7 @@ jobs:
     steps:
     - uses: actions/checkout@v6
 
-    - uses: vanilla-os/vib-gh-action@v1.0.7
+    - uses: vanilla-os/vib-gh-action@3f83b0fb22353994b9a54547fbd3832046ce8d7a
       with:
         recipe: 'recipe.yml'
         plugins: 'Vanilla-OS/vib-fsguard:v1.6.1'
