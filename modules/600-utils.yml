@@ -4,7 +4,6 @@ sources:
   - packages:
     - usbutils
     - sshfs
-    - syncthing
     - linux-perf
     - krdc
     - krdp
