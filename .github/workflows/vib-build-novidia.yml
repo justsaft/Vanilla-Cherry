@@ -140,6 +140,8 @@ jobs:
       uses: docker/metadata-action@v5
       with:
         images: ${{ env.IMAGE_URL }}
+        tags: |
+          type=raw,value=${{ github.ref }}
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
@@ -158,13 +160,13 @@ jobs:
       with:
         context: .
         file: Containerfile-novidia
-        tags: ${{ env.IMAGE_URL }}
+        tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
         cache-from: type=gha
         cache-to: type=gha,mode=max
         platforms: linux/${{ matrix.arch }}
         provenance: false
-        outputs: type=image,push-by-digest=true,name-canonical=true,push=${{ github.event_name != 'pull_request' }}
+        outputs: type=image,push-by-digest=false,name-canonical=true,push=${{ github.event_name != 'pull_request' }}
 
     - name: Attest pushed image
       uses: actions/attest-build-provenance@v3
