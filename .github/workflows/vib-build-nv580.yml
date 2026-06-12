@@ -118,6 +118,36 @@ jobs:
     steps:
     - uses: actions/checkout@v6
 
+    - name: Check base image architecture support
+        run: |
+          BASE_IMAGE="${{ needs.check_update.outputs.base_image }}"
+          TARGET_ARCH="${{ matrix.arch }}"
+          echo "Checking if $BASE_IMAGE supports the $TARGET_ARCH architecture..."
+          MANIFEST=$(skopeo inspect --raw docker://$BASE_IMAGE | jq -r '.')
+
+          if echo "$MANIFEST" | jq -e '.manifests' > /dev/null 2>&1; then
+            if echo "$MANIFEST" | jq -e ".manifests[] | select(.platform.architecture==\"$TARGET_ARCH\")" > /dev/null 2>&1; then
+              echo "Base image supports $TARGET_ARCH architecture. Continuing"
+            else
+              echo "Base image does NOT support $TARGET_ARCH architecture. Stopping here."
+              echo "Supported architectures:"
+              echo "$MANIFEST" | jq -r '.manifests[].platform.architecture' | sort | uniq
+              exit 1
+            fi
+          else
+            IMAGE_ARCH=$(echo "$MANIFEST" | jq -r '.architecture')
+            if [ "$IMAGE_ARCH" = "null" ]; then
+              IMAGE_ARCH="amd64"
+              echo "Architecture field is null, assuming amd64"
+            fi
+            if [ "$IMAGE_ARCH" = "$TARGET_ARCH" ]; then
+              echo "Base image supports $TARGET_ARCH architecture. Continuing"
+            else
+              echo "Base image only supports $IMAGE_ARCH, but we're building for $TARGET_ARCH. Stopping here"
+              exit 1
+            fi
+          fi
+
     - uses: vanilla-os/vib-gh-action@3f83b0fb22353994b9a54547fbd3832046ce8d7a
       with:
         recipe: 'recipe-nv580.yml'
