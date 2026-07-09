@@ -66,6 +66,7 @@ modules:
   commands:
     - mkdir -p /usr/lib/openrgb
     - mkdir -p /usr/lib/openrgb/plugins
+    - rm -rf /usr/lib/openrgb/plugins/*
     - mv /sources/openrgb-install-plugins/OpenRGBEffectsPlugin_1.0rc2_Linux_*_415dc20/openrgb-install-plugins.so /usr/lib/openrgb/plugins/OpenRGBEffectsPlugin_1.0rc2.so
     - mv /sources/openrgb-install-plugins/OpenRGBVisualMapPlugin_1.0rc2_Linux_*_320420d/openrgb-install-plugins.so /usr/lib/openrgb/plugins/OpenRGBVisualMapPlugin_1.0rc2.so
     - mv /sources/openrgb-install-plugins/OpenRGBHardwareSyncPlugin_1.0rc2_Linux_*_4aed949/openrgb-install-plugins.so /usr/lib/openrgb/plugins/OpenRGBHardwareSyncPlugin_1.0rc2.so
