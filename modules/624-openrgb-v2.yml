@@ -2,16 +2,16 @@ name: openrgb-install
 type: shell
 sources:
 - type: file
-  url: https://codeberg.org/OpenRGB/OpenRGB/releases/download/release_candidate_1.0rc2/openrgb_1.0rc2_amd64_trixie_0fca93e.deb
-  checksum: 4917a060859164a22816dfce305ef73b87529c62044c450390275954723f85f0
+  url: https://codeberg.org/OpenRGB/OpenRGB/releases/download/release_candidate_1.0rc3/openrgb_1.0rc3_amd64_trixie_6fbcf62.deb
+  checksum: d9c9d83c1f9d49bc9b3a614448e16662520770150e679740fab65878717010cf
   only-arches: [amd64]
 - type: file
-  url: https://codeberg.org/OpenRGB/OpenRGB/releases/download/release_candidate_1.0rc2/openrgb_1.0rc2_arm64_trixie_0fca93e.deb
-  checksum: 34a9119806ed9bb9f27c7351932e5937b0a401e1a7c7d2d9a362977d49686a53
+  url: https://codeberg.org/OpenRGB/OpenRGB/releases/download/release_candidate_1.0rc3/openrgb_1.0rc3_arm64_trixie_6fbcf62.deb
+  checksum: e4eed2f56b6b8e7cfcdcbe82bb850f657eb01eda41bb099c5ea20cb709713a0f
   only-arches: [arm64]
 commands:
-  - mv /sources/openrgb-install/openrgb_1.0rc2_*_trixie_0fca93e/openrgb-install.deb /sources/openrgb-install/openrgb_1.0rc2.deb
-  - apt-get install -y /sources/openrgb-install/openrgb_1.0rc2.deb
+  - mv /sources/openrgb-install/openrgb_1.0rc3_*_trixie_6fbcf62/openrgb-install.deb /sources/openrgb-install/openrgb.deb
+  - apt-get install -y /sources/openrgb-install/openrgb.deb
 
 modules:
 - name: openrgb-install-deps
