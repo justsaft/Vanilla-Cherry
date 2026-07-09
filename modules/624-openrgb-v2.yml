@@ -19,7 +19,6 @@ modules:
   sources:
     - packages:
       - i2c-tools
-      # - openrgb-dkms-drivers
       - qgnomeplatform-qt5
 
 - name: openrgb-install-plugins
@@ -71,6 +70,3 @@ modules:
     - mv /sources/openrgb-install-plugins/OpenRGBVisualMapPlugin_1.0rc2_Linux_*_320420d/openrgb-install-plugins.so /usr/lib/openrgb/plugins/OpenRGBVisualMapPlugin_1.0rc2.so
     - mv /sources/openrgb-install-plugins/OpenRGBHardwareSyncPlugin_1.0rc2_Linux_*_4aed949/openrgb-install-plugins.so /usr/lib/openrgb/plugins/OpenRGBHardwareSyncPlugin_1.0rc2.so
     - mv /sources/openrgb-install-plugins/OpenRGBE131ReceiverPlugin_1.0rc2_Linux_*_d765325/openrgb-install-plugins.so /usr/lib/openrgb/plugins/OpenRGBE131ReceiverPlugin_1.0rc2.so
-
-#- i2c-piix4 # AMD Systems
-#- i2c-i801 # Intel Systems
