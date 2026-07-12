@@ -35,7 +35,7 @@ stages:
       - modules/624-openrgb-v2.yml
       - modules/625-syncthing.yml
       - modules/628-tailscale.yml
-      - modules/700-gs-extensions.yml
+      - modules/700-gs-customization.yml
       - modules/999-cleanup.yml
 
   - name: cleanup

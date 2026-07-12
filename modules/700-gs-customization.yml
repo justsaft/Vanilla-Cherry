@@ -1,0 +1,14 @@
+name: gs-extensions
+type: apt
+sources:
+  - packages:
+    - gnome-shell-extension-status-icons
+    - gnome-shell-extension-dashtodock
+    - gnome-shell-extension-gamemode
+    - gnome-shell-extension-freon
+    - gnome-shell-extension-window-list
+    - gnome-shell-extension-autohidetopbar
+    - gnome-shell-extension-no-annoyance
+    - gnome-shell-extension-caffeine
+    - gnome-shell-extension-workspace-indicator
+    - dconf-gsettings-backend
