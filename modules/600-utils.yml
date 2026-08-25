@@ -8,6 +8,7 @@ sources:
     - krdc
     - krdp
     - kdeconnect
+    - davfs
     #- testdisk
 
 # pulseaudio-utils is needed for the Audio quick settings panel GS extension
