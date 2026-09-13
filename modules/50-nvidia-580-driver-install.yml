@@ -9,7 +9,6 @@ modules:
     sources:
       - packages:
         - nvidia-driver
-        - nvidia-dkms
         - nvidia-vaapi-driver
         - nvidia-persistenced
         - cuda-drivers
