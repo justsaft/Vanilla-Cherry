@@ -1,7 +1,8 @@
 name: lact-gpu-tool
 type: shell
 commands:
+  - TARGET_DISTRO='ubuntu-2604'
   - ARCH=$(dpkg --print-architecture)
   - LACT_VER=$(curl -s https://api.github.com/repos/ilya-zlobintsev/LACT/releases/latest | grep tag_name | cut -d'"' -f4)
-  - curl -LO "https://github.com/ilya-zlobintsev/LACT/releases/download/${LACT_VER}/lact-${LACT_VER#v}-0.${ARCH}.debian-13.deb"
-  - apt install -y -qq --no-install-recommends ./lact-${LACT_VER#v}-0.${ARCH}.debian-13.deb
+  - curl -LO "https://github.com/ilya-zlobintsev/LACT/releases/download/${LACT_VER}/lact-${LACT_VER#v}-0.${ARCH}.${TARGET_DISTRO}.deb"
+  - apt install -y -qq --no-install-recommends ./lact-${LACT_VER#v}-0.${ARCH}.${TARGET_DISTRO}.deb
