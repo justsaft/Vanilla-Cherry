@@ -148,7 +148,7 @@ jobs:
           fi
         fi
 
-    - uses: vanilla-os/vib-gh-action@3f83b0fb22353994b9a54547fbd3832046ce8d7a
+    - uses: vanilla-os/vib-gh-action@v1.1.0
       with:
         recipe: 'recipe-nv580.yml'
         plugins: 'Vanilla-OS/vib-fsguard:v1.6.1'

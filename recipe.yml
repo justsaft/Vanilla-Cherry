@@ -1,6 +1,6 @@
 name: vanilla-cherry
 id: vanilla-cherry
-vibversion: 1.0.7
+vibversion: 1.1.0
 
 stages:
 - id: build
@@ -10,11 +10,20 @@ stages:
   labels:
     maintainer: JustSaft
   args:
-    DEBIAN_FRONTEND: noninteractive # Set the image environment as non-interactive
-
+    DEBIAN_FRONTEND: noninteractive
   runs:
     commands:
       - echo 'APT::Install-Recommends "1";' > /etc/apt/apt.conf.d/01norecommends
+  cleanup:
+    - /tmp/*
+    - /var/cache/apt/pkgcache.bin
+    - /var/cache/debconf
+    - /var/cache/dictionaries-common
+    - /var/cache/fontconfig
+    - /var/cache/ldconfig
+    - /var/cache/man
+    - /var/lib/dbus/machine-id
+    - /var/log/*
 
   modules:
   - name: init-setup
@@ -60,9 +69,3 @@ stages:
           - rm -rf /FsGuard 
           - rm -f ./minisign.pub ./minisign.key 
           - chmod +x /usr/sbin/init
-
-  - name: cleanup2
-    type: shell
-    commands:
-      - rm -rf /tmp/*
-      - rm -rf /var/tmp/*
