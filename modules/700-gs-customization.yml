@@ -16,7 +16,7 @@ modules:
   - name: gtk2-theming
     type: apt
     sources:
-      packages:
+      - packages:
         - gtk2-engines-murrine
         - gnome-themes-extra
         - gnome-themes-extra-data
@@ -37,7 +37,7 @@ modules:
   - name: qt5-qt6-theming
     type: apt
     sources:
-      packages:
+      - packages:
         - qgnomeplatform-qt5
         - qgnomeplatform-qt6
         - adwaita-qt
