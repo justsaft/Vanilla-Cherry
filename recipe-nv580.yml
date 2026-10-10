@@ -15,6 +15,7 @@ stages:
     commands:
       - echo 'APT::Install-Recommends "1";' > /etc/apt/apt.conf.d/01norecommends
   cleanup:
+    - /boot/initrd.img*
     - /tmp/*
     - /var/cache/apt/pkgcache.bin
     - /var/cache/debconf
@@ -29,8 +30,12 @@ stages:
   - name: init-setup
     type: shell
     commands:
-      - lpkg --unlock
-      - apt-get update
+    - echo 'PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"' >> /etc/environment
+    - sed -i '4,10d' /etc/profile
+    - apt update
+    - apt clean
+    - apt-mark hold snapd gnome-software-plugin-snap
+    - apt -y install squashfs-tools minisign
 
   - name: mystuff
     type: includes
@@ -46,25 +51,20 @@ stages:
       - modules/700-gs-customization.yml
       - modules/999-cleanup.yml
 
-  - name: cleanup
+  - name: cleanup-and-sysconf-setup
     type: shell
     commands:
       - SUDO_FORCE_REMOVE=yes apt purge -y sudo
-      - apt-get autoremove -y
-      - apt-get clean
+      - apt autoremove -y
+      - apt clean
       - lpkg --lock
+      - rsync -a /etc/ /sysconf/
+    cleanup:
+      - /sysconf/resolv.conf
 
-  - name: fsguard
-    type: fsguard
-    CustomFsGuard: false
-    FsGuardLocation: "/usr/sbin/FsGuard"
-    GenerateKey: true
-    FilelistPaths: ["/usr/bin"]
-    modules:
-      - name: remove-prev-fsguard
-        type: shell
-        commands:
-          - rm -rf /FsGuard 
-          - rm -f ./minisign.pub ./minisign.key 
-          - chmod +x /usr/sbin/init
 
+- id: initrd
+  base: build
+  runs:
+    commands:
+      - touch $(readlink -f /initrd.img)
