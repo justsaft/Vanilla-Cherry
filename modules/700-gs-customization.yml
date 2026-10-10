@@ -11,3 +11,34 @@ sources:
     - gnome-shell-extension-caffeine
     - gnome-shell-extension-workspace-indicator
     - dconf-gsettings-backend
+
+modules:
+  - name: gtk2-theming
+    type: apt
+    sources:
+      packages:
+        - gtk2-engines-murrine
+        - gnome-themes-extra
+        - gnome-themes-extra-data
+        - adwaita-icon-theme
+
+  - name: gtk3-theming
+    type: shell
+    sources:
+      - type: file
+        url: https://github.com/lassekongo83/adw-gtk3/releases/download/v6.5/adw-gtk3v6.5.tar.xz
+        checksum: a81780fadfc432be0fc3d89c4ebb41aa28e4f032d42c36f9789c57dd10cfa41c
+    commands:
+      - tar -xf adw-gtk3v6.5.tar.xz
+      - cp -a adw-gtk3 adw-gtk3-dark /usr/share/themes/
+      - if [[ ! -e /usr/share/themes/adw-gtk3/gtk-3.0/gtk.css ]]; then false; fi
+      - if [[ ! -e /usr/share/themes/adw-gtk3-dark/gtk-3.0/gtk.css ]]; then false; fi
+
+  - name: qt5-qt6-theming
+    type: apt
+    sources:
+      packages:
+        - qgnomeplatform-qt5
+        - qgnomeplatform-qt6
+        - adwaita-qt
+        - adwaita-qt6
