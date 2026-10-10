@@ -19,7 +19,6 @@ modules:
   sources:
     - packages:
       - i2c-tools
-      - qgnomeplatform-qt5
 
 - name: openrgb-install-plugins
   type: shell
