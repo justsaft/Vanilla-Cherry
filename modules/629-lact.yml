@@ -10,7 +10,8 @@ sources:
     checksum: deb94873d8bba7362726cc3a6cd853796ed6fc402863d76d05ff31d191d96d9c
     only-arches: [arm64]
 commands:
-  - cp -a /sources/lact-install/lact-v0.10.1-*/. /
+  - ARCH=$(dpkg --print-architecture)
+  - cp -a /sources/lact-install/lact-v0.10.1-${ARCH}/. /
   - ln -sf /usr/lib/systemd/system/lactd.service /etc/systemd/system/multi-user.target.wants/lactd.service
 
 modules:
@@ -23,4 +24,3 @@ modules:
       - libadwaita-1-0
       - libdrm2
       - libudev1
-      - libdisplay-info2
