@@ -24,4 +24,3 @@ modules:
       - libdrm2
       - libudev1
       - libdisplay-info2
-      - policykit-1
