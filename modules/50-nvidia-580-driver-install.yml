@@ -1,4 +1,4 @@
-name: nvidia-stuff
+name: nvidia-post-installation-modules
 type: includes
 includes:
   - modules/51-nvidia-systemd-units.yml

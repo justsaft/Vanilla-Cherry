@@ -1,4 +1,4 @@
-name: enable-wayland
+name: nvidia-wayland-hack
 type: shell
 commands:
   - mkdir -p /etc/udev/rules.d
