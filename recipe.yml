@@ -1,10 +1,20 @@
-name: vanilla-cherry
-id: vanilla-cherry
+/* Canonical recipe, expanded per image by scripts/gen-recipe.sh (cpp).
+   Knobs (-D): IMAGE_NAME, BASE_IMAGE, NV580, NOVIDIA.
+   Pitfall: a slash followed by a star inside a path opens a C comment,
+   so quote such globs, e.g. "/tmp/*". */
+#ifndef IMAGE_NAME
+#define IMAGE_NAME vanilla-cherry
+#endif
+#ifndef BASE_IMAGE
+#define BASE_IMAGE ghcr.io/vanilla-os/gnome:latest
+#endif
+name: IMAGE_NAME
+id: IMAGE_NAME
 vibversion: 1.1.0
 
 stages:
 - id: build
-  base: ghcr.io/vanilla-os/gnome:latest
+  base: BASE_IMAGE
   singlelayer: false
   addincludes: true
   labels:
@@ -16,7 +26,7 @@ stages:
       - echo 'APT::Install-Recommends "1";' > /etc/apt/apt.conf.d/01norecommends
   cleanup:
     - /boot/initrd.img*
-    - /tmp/*
+    - "/tmp/*"
     - /var/cache/apt/pkgcache.bin
     - /var/cache/debconf
     - /var/cache/dictionaries-common
@@ -24,7 +34,7 @@ stages:
     - /var/cache/ldconfig
     - /var/cache/man
     - /var/lib/dbus/machine-id
-    - /var/log/*
+    - "/var/log/*"
 
   modules:
   - name: init-setup
@@ -41,9 +51,12 @@ stages:
   - name: mystuff
     type: includes
     includes:
-      # - modules/50-nvidia-driver-install.yml
-      # - modules/52-nvidia-post-install.yml
+#if defined(NOVIDIA)
+#elif defined(NV580)
+      - modules/50-nvidia-580-driver-install.yml
+#else
       - gh:vanilla-os/nvidia-exp-image:dev:modules/50-nvidia-driver-install.yml
+#endif
       - modules/600-utils.yml
       - modules/601-audio.yml
       - modules/604-evremap.yml
