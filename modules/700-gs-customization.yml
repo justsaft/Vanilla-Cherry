@@ -28,8 +28,8 @@ modules:
         url: https://github.com/lassekongo83/adw-gtk3/releases/download/v6.5/adw-gtk3v6.5.tar.xz
         checksum: a81780fadfc432be0fc3d89c4ebb41aa28e4f032d42c36f9789c57dd10cfa41c
     commands:
-      - tar -xf adw-gtk3v6.5.tar.xz
-      - cp -a adw-gtk3 adw-gtk3-dark /usr/share/themes/
+      - tar -xf /sources/gtk3-theming/adw-gtk3v6.5.tar/gtk3-theming.xz -C /sources/gtk3-theming
+      - cp -a /sources/gtk3-theming/adw-gtk3 /sources/gtk3-theming/adw-gtk3-dark /usr/share/themes/
       - if [[ ! -e /usr/share/themes/adw-gtk3/gtk-3.0/gtk.css ]]; then false; fi
       - if [[ ! -e /usr/share/themes/adw-gtk3-dark/gtk-3.0/gtk.css ]]; then false; fi
 
