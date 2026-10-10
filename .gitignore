@@ -6,3 +6,5 @@ sources/*
 
 **/.DS_Store
 **/._*
+
+out.*.yml
