@@ -2,11 +2,11 @@ name: lact-install
 type: shell
 sources:
   - type: tar
-    url: https://github.com/justsaft/vanilla-cherry/releases/download/lact-v0.10.1/lact-v0.10.1-amd64.tar.gz
+    url: https://github.com/justsaft/vos-ci-building/releases/download/lact-v0.10.1/lact-v0.10.1-amd64.tar.gz
     checksum: c00a6fa952ca81d3e421edd51ae654cb816e1b1328ccfb483a6ebc291e9d4356
     only-arches: [amd64]
   - type: tar
-    url: https://github.com/justsaft/vanilla-cherry/releases/download/lact-v0.10.1/lact-v0.10.1-arm64.tar.gz
+    url: https://github.com/justsaft/vos-ci-building/releases/download/lact-v0.10.1/lact-v0.10.1-arm64.tar.gz
     checksum: deb94873d8bba7362726cc3a6cd853796ed6fc402863d76d05ff31d191d96d9c
     only-arches: [arm64]
 commands:
