@@ -1,0 +1,12 @@
+name: keyd-install
+type: apt
+sources:
+  - packages:
+    - keyd
+
+# Unlike evremap, keyd:
+#   - is packaged directly in Debian 13 (trixie) and later, no PPA/repo needed
+#   - ships + enables its own systemd unit on install, nothing to remove/relink
+#   - matches keyboards by [ids] glob instead of a hardcoded device name, so
+#     there is no per-machine systemd override needed (see evremap.service's
+#     ConditionPathExists / the comment in modules/604-evremap.yml)

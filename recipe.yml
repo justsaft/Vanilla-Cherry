@@ -59,7 +59,11 @@ stages:
 #endif
       - modules/600-utils.yml
       - modules/601-audio.yml
+#if defined(BUILD_WITH_EVREMAP)
       - modules/604-evremap.yml
+#else
+      - modules/605-keyd.yml
+#endif
       - modules/620-gaming.yml
       - modules/624-openrgb-v2.yml
       - modules/625-syncthing.yml
