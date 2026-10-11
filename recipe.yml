@@ -53,14 +53,19 @@ stages:
 #endif
       - modules/600-utils.yml
       - modules/601-audio.yml
+
 #if defined(BUILD_WITH_EVREMAP)
       - modules/604-evremap.yml
 #else
       - modules/605-keyd.yml
 #endif
+
       - modules/620-gaming.yml
       - PREPROCESS(modules/624-openrgb-v2.yml)
       - modules/625-syncthing.yml
+#if defined(BUILD_WITH_WIRESHARK)
+      - modules/626-wireshark.yml
+#endif
       - modules/628-tailscale.yml
       - modules/629-lact.yml
       - modules/700-gs-customization.yml
