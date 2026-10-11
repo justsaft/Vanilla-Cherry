@@ -31,8 +31,28 @@ sources:
   url: ORGB_URL(arm64)
   checksum: 713b1495e1bbb9fcb7040f48c3c637979c9bbbd827237fb63f40bba0ae8ff7ac
   only-arches: [arm64]
+
+- type: file
+  url: https://codeberg.org/OpenRGB/hidapi-hotplug/releases/download/hidapi-hotplug-0.15.0/libhidapi-hotplug-libusb0_0.15.0-1_trixie_amd64.deb
+  checksum: ff4c563d396a80acd876454bf831af3e6578e4bd1d0b5b47990f75e6577450a6
+  only-arches: [amd64]
+- type: file
+  url: https://codeberg.org/OpenRGB/hidapi-hotplug/releases/download/hidapi-hotplug-0.15.0/libhidapi-hotplug-libusb0_0.15.0-1_trixie_arm64.deb
+  checksum: e9026abb3bc339e098ddec6c7dd089e403afb92e5323bf1abc923788c6e9ab52
+  only-arches: [arm64]
+
+- type: file
+  url: https://codeberg.org/OpenRGB/hidapi-hotplug/releases/download/hidapi-hotplug-0.15.0/libhidapi-hotplug-hidraw0_0.15.0-1_trixie_amd64.deb
+  checksum: 4c12ad429aad50b6e38ff7a04be37268a2401b76884d4067f70ed9df37ebbd2d
+  only-arches: [amd64]
+- type: file
+  url: https://codeberg.org/OpenRGB/hidapi-hotplug/releases/download/hidapi-hotplug-0.15.0/libhidapi-hotplug-hidraw0_0.15.0-1_trixie_arm64.deb
+  checksum: bbc4544a7e4a79929d1c59df3f1a16708a3c1b29eacea64aa1b7efc66beb5ed2
+  only-arches: [arm64]
+
 commands:
-  - apt-get install -y /sources/openrgb-install/openrgb_@@ORGB_VERSION@@_$(dpkg --print-architecture)_@@ORGB_RELEASE_DISTRO@@_@@OPENRGB_COMMIT/openrgb-install.deb
+  - ARCH=$(dpkg --print-architecture)
+  - apt-get install -y -qq --no-install-recommends /sources/openrgb-install/openrgb_@@ORGB_VERSION@@_${ARCH}_@@ORGB_RELEASE_DISTRO@@_@@OPENRGB_COMMIT/openrgb-install.deb libhidapi-hidraw0 libhidapi-libusb0 /sources/openrgb-install/libhidapi-hotplug-hidraw0_0.15.0-1_trixie_${ARCH}/openrgb-install.deb /sources/openrgb-install/libhidapi-hotplug-libusb0_0.15.0-1_trixie_${ARCH}/openrgb-install.deb
 
 modules:
 - name: openrgb-install-deps
