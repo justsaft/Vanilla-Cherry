@@ -1,9 +1,7 @@
-#ifndef IMAGE_NAME
-#define IMAGE_NAME vanilla-cherry
-#endif
-#ifndef BASE_IMAGE
-#define BASE_IMAGE ghcr.io/vanilla-os/gnome:latest
-#endif
+
+#include "image.h"
+#include "macros.h"
+
 name: IMAGE_NAME
 id: IMAGE_NAME
 vibversion: 1.1.0
