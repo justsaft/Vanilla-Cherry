@@ -8,3 +8,4 @@ sources/*
 **/._*
 
 out.*.yml
+out.modules/

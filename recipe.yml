@@ -59,7 +59,7 @@ stages:
       - modules/605-keyd.yml
 #endif
       - modules/620-gaming.yml
-      - modules/624-openrgb-v2.yml
+      - PREPROCESS(modules/624-openrgb-v2.yml)
       - modules/625-syncthing.yml
       - modules/628-tailscale.yml
       - modules/629-lact.yml
