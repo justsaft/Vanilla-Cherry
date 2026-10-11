@@ -1,7 +1,3 @@
-/* Canonical recipe, expanded per image by scripts/gen-recipe.sh (cpp).
-   Knobs (-D): IMAGE_NAME, BASE_IMAGE, NV580, NOVIDIA.
-   Pitfall: a slash followed by a star inside a path opens a C comment,
-   so quote such globs, e.g. "/tmp/*". */
 #ifndef IMAGE_NAME
 #define IMAGE_NAME vanilla-cherry
 #endif
