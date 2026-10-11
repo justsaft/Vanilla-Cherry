@@ -1,5 +1,5 @@
 
-#define PREPROCESS(module) out. ## module
+#define PREPROCESS(module) out.@@module
 
 #define COMMENT #
 #define _COMMENT(text) # text
