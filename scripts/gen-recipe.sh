@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # Generate a Vib recipe from recipe.in.yml with the C preprocessor.
 # Usage: scripts/gen-recipe.sh OUTPUT [-DNAME[=value] ...]
 # Run from anywhere; the output path is relative to the repo root.
@@ -23,12 +23,12 @@ call_preprocessor() {
 
     echo "$__RECIPE__ -> $__OUTPUT__"
 
-    cpp -P -undef -traditional-cpp ${PREPROCESSOR_EXTRA_ARGS} ${__RECIPE__} | cat -s | sed 's/@@//g' | sed '1{/^$/d}' > "$__OUTPUT__"
+    cpp -P -undef -traditional-cpp ${PREPROCESSOR_EXTRA_ARGS} ${__RECIPE__} | cat -s | sed 's/@@//g' | sed '1{/^$/d;}' > "$__OUTPUT__"
 }
 
 call_preprocessor "output=$output"
 
-TO_PREPROCESS=$(grep -oP '\bPREPROCESS\s*\(\K[^)]*' recipe.yml)
+TO_PREPROCESS=$(sed -n 's/.*PREPROCESS\s*(\([^)]*\)).*/\1/p' recipe.yml)
 
 if [ -n "$TO_PREPROCESS" ]; then
     mkdir -p out.modules
