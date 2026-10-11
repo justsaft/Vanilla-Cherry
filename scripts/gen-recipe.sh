@@ -9,7 +9,7 @@ shift
 
 PREPROCESSOR_EXTRA_ARGS="$@"
 
-function call_preprocessor() {
+call_preprocessor() {
     local __RECIPE__="recipe.yml"
     local __OUTPUT__="out.$__RECIPE__"
 
@@ -30,10 +30,9 @@ call_preprocessor "output=$output"
 
 TO_PREPROCESS=$(grep -oP '\bPREPROCESS\s*\(\K[^)]*' recipe.yml)
 
-if [[ -n $TO_PREPROCESS ]]; then
+if [ -n "$TO_PREPROCESS" ]; then
     mkdir -p out.modules
     for i in $TO_PREPROCESS; do
         call_preprocessor "recipe=$i" "output=out.$i";
     done
 fi
-
