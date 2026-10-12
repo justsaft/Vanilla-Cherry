@@ -34,7 +34,7 @@ The tag is the name of the branch or git tag that was built, so `main` is the cu
   - OpenRGB 1.0rc3 with the Effects and Visual Map plugins, plus `i2c-tools`
   - LACT 0.10.1 for GPU control (overclock at your own risk!)
   - `usbutils`, `brightnessctl`, `linux-perf`
-- Remote and network: `sshfs`, `davfs2`, `krdc`, `krdp`, `kdeconnect`, Syncthing and Tailscale from their upstream repositories
+- Remote and network: `sshfs`, `davfs2`, `krdc`, `krdp`, `kdeconnect`, Syncthing and Tailscale
 - GNOME: appindicator, dash-to-dock, gamemode, window-list, autohide top bar, no-annoyance, caffeine and workspace-indicator extensions, plus adw-gtk3 and Adwaita theming for GTK 2, 3, Qt 5 and Qt 6 apps
 
 ## Disabled / Not included modules
@@ -43,7 +43,7 @@ The tag is the name of the branch or git tag that was built, so `main` is the cu
 - MC extras: distro libraries for Prism Launcher²
 
 ¹Currently non-functional under Vanilla.
-²doesn't improve performance
+²doesn't improve performance.
 
 ## How the images are built
 
@@ -69,11 +69,9 @@ vib build out.recipe-nv580.yml
 podman image build . -t tag
 ```
 
-The output has to sit in the repo root so that the `modules/` includes resolve. `out.*.yml` is in `.gitignore`.
+The output has to sit in the repo root so that the `modules/` and `out.modules` includes resolve.
 
 ## Building on CI
-
-`.github/workflows/vib-build.yml` runs on pushes to `main`, tags, pull requests and manual dispatch. It calls `.github/workflows/build-image.yml` once per image, and the three images build in parallel. Each call does the following:
 
 1. Generates the recipe and reads the base image from its first stage.
 2. Verifies the base image attestation with `gh attestation verify`.
