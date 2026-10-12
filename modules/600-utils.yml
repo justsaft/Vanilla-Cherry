@@ -5,9 +5,6 @@ sources:
     - usbutils
     - sshfs
     - linux-perf
-    - krdc
-    - krdp
-    - kdeconnect
     - davfs2
     - brightnessctl
     #- testdisk

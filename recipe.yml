@@ -66,6 +66,7 @@ stages:
 #if defined(BUILD_WITH_WIRESHARK)
       - modules/626-wireshark.yml
 #endif
+      - modules/627-kdeconnect.yml
       - modules/628-tailscale.yml
       - modules/629-lact.yml
       - modules/700-gs-customization.yml
