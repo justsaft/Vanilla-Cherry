@@ -29,13 +29,13 @@ commands:
   - ARCH=$(dpkg --print-architecture)
   - KDECONNECT_INSTALL_PREFIX=/usr/local
   - cp -r /sources/kdeconnect-nightly-install/kdeconnect-nightly-${ARCH}/* ${KDECONNECT_INSTALL_PREFIX}
-  - mv /sources/kdeconnect-nightly-install/org.kde.kdeconnect.service/kdeconnect-nightly-install.in /sources/kdeconnect-nightly-install/org.kde.kdeconnect.service
-  - mv /sources/kdeconnect-nightly-install/org.kde.kdeconnect.daemon.desktop/kdeconnect-nightly-install.cmake /sources/kdeconnect-nightly-install/org.kde.kdeconnect.daemon.desktop
-  - sed -i "s|@KDE_INSTALL_FULL_BINDIR@|$KDECONNECT_INSTALL_PREFIX/bin|g" /sources/kdeconnect-nightly-install/org.kde.kdeconnect.daemon.desktop
-  - sed -i "s|@kdeconnectd_prefix@|$KDECONNECT_INSTALL_PREFIX/bin/|g" /sources/kdeconnect-nightly-install/org.kde.kdeconnect.service
-  - cp /sources/kdeconnect-nightly-install/org.kde.kdeconnect.daemon.desktop /usr/share/applications/
-  - cp /sources/kdeconnect-nightly-install/org.kde.kdeconnect.daemon.desktop /etc/xdg/autostart/
-  - cp /sources/kdeconnect-nightly-install/org.kde.kdeconnect.service /usr/local/share/dbus-1/system-services
+  - KDECONNECT_DBUS_DAEMON_FILE=/sources/kdeconnect-nightly-install/org.kde.kdeconnect.service/kdeconnect-nightly-install.in
+  - KDECONNECT_DESKTOP_FILE=/sources/kdeconnect-nightly-install/org.kde.kdeconnect.daemon.desktop/kdeconnect-nightly-install.cmake
+  - sed -i "s|@KDE_INSTALL_FULL_BINDIR@|$KDECONNECT_INSTALL_PREFIX/bin|g" ${KDECONNECT_DBUS_DAEMON_FILE}
+  - sed -i "s|@kdeconnectd_prefix@|$KDECONNECT_INSTALL_PREFIX/bin/|g" ${KDECONNECT_DESKTOP_FILE}
+  - cp ${KDECONNECT_DESKTOP_FILE} /usr/share/applications/
+  - cp ${KDECONNECT_DESKTOP_FILE} /etc/xdg/autostart/
+  - cp ${KDECONNECT_DBUS_DAEMON_FILE} /usr/local/share/dbus-1/system-services
 
 modules:
 - name: kdeconnect-additional-tools
