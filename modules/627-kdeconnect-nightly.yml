@@ -36,6 +36,7 @@ commands:
   - cp ${KDECONNECT_DESKTOP_FILE} /usr/share/applications/
   - cp ${KDECONNECT_DESKTOP_FILE} /etc/xdg/autostart/
   - cp ${KDECONNECT_DBUS_DAEMON_FILE} /usr/local/share/dbus-1/system-services
+  - cp -r /sources/kdeconnect-nightly-install/libei-1.6.0-${ARCH}/usr/* /usr
 
 modules:
 - name: kdeconnect-additional-tools
