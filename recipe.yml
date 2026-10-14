@@ -2,6 +2,10 @@
 #include "image.h"
 #include "macros.h"
 
+#if defined(NOVIDIA) && defined(NV580)
+#error Cannot select novidia and nv580 at the same time.
+#endif
+
 name: IMAGE_NAME
 id: IMAGE_NAME
 vibversion: 1.1.0
