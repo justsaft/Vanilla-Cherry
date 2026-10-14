@@ -18,16 +18,19 @@
 
 #define ORGB_PLUGIN_URL(ARCH, ORGB_PLUGIN_NAME, ORGB_PLUGIN_COMMIT) ORGB_BASE_URL@@ORGB_PLUGIN_NAME@@/ORGB_RELEASE_URL@@_@@ORGB_VERSION/OpenRGB@@ORGB_PLUGIN_NAME@@_@@ORGB_VERSION@@_@@Trixie@@_@@ARCH@@_@@ORGB_PLUGIN_COMMIT@@.deb
 
+#define PLUGIN_APT_INSTALL(ORGB_PLUGIN, ORGB_PLUGIN_COMMIT) apt install -y -qq --no-install-recommends /sources/openrgb-install-plugins/OpenRGB@@ORGB_PLUGIN@@_@@ORGB_VERSION@@_Trixie_${ARCH}_@@ORGB_PLUGIN_COMMIT/openrgb-install-plugins.deb
+
+#define ORGB_PLUGIN_PKG(ORGB_PLUGIN, ORGB_PLUGIN_COMMIT) /sources/openrgb-install-plugins/OpenRGB@@ORGB_PLUGIN@@_@@ORGB_VERSION@@_Trixie_${ARCH}_@@ORGB_PLUGIN_COMMIT/openrgb-install.deb
+
+
 name: openrgb-install
 type: shell
 sources:
 - type: file
-  _COMMENT(https://codeberg.org/OpenRGB/OpenRGB/releases/download/release_1.0/openrgb_1.0_amd64_trixie_81bbe18.deb)
   url: ORGB_URL(amd64)
   checksum: 51f8b4f5260207569fdeda9e1b9dd0bd2d02af2b30e068f7c79471e7f53e36f8
   only-arches: [amd64]
 - type: file
-  _COMMENT(https://codeberg.org/OpenRGB/OpenRGB/releases/download/release_1.0/openrgb_1.0_arm64_trixie_81bbe18.deb)
   url: ORGB_URL(arm64)
   checksum: 713b1495e1bbb9fcb7040f48c3c637979c9bbbd827237fb63f40bba0ae8ff7ac
   only-arches: [arm64]
@@ -50,9 +53,64 @@ sources:
   checksum: bbc4544a7e4a79929d1c59df3f1a16708a3c1b29eacea64aa1b7efc66beb5ed2
   only-arches: [arm64]
 
+- type: file
+  url: ORGB_PLUGIN_URL(amd64,EffectsPlugin,EFFECTS_PL_COMMIT)
+  checksum: d5c6b587bafe89eab419e692c5ab59ea6723dfa110c307c0e6942563fcae5d83
+  only-arches: [amd64]
+- type: file
+  url: ORGB_PLUGIN_URL(arm64,EffectsPlugin,EFFECTS_PL_COMMIT)
+  checksum: 3426108849c7f9e666eb697b2d9111899b62a9b02fc3828f99e465e779da1b36
+  only-arches: [arm64]
+
+- type: file
+  url: ORGB_PLUGIN_URL(amd64,VisualMapPlugin,VISUALMAP_PL_COMMIT)
+  checksum: d29b67a87b1cc9da24e1698de95cdb3babcac65b52f488a32d11a6bfbfb6d322
+  only-arches: [amd64]
+- type: file
+  url: ORGB_PLUGIN_URL(arm64,VisualMapPlugin,VISUALMAP_PL_COMMIT)
+  checksum: 287b08ced358e0f02e86524da873c64743f454053a8f8b15e985772c903981a1
+  only-arches: [arm64]
+
+- type: file
+  url: ORGB_PLUGIN_URL(amd64,HardwareSyncPlugin,HARDWARESYNC_PL_COMMIT)
+  checksum: 9dfa051dd4990da6ebf409d4fa16f1e5656a70f7280c445260635c7fb9362d54
+  only-arches: [amd64]
+- type: file
+  url: ORGB_PLUGIN_URL(arm64,HardwareSyncPlugin,HARDWARESYNC_PL_COMMIT)
+  checksum: 2d582188141fc9ffab9ca7f1824f1635ab830787e2dea3171b2218cec8678a54
+  only-arches: [arm64]
+
+- type: file
+  url: ORGB_PLUGIN_URL(amd64,E131ReceiverPlugin,E131_PL_COMMIT)
+  checksum: 78f5e132a1b6febaa4c285e9c7ee03223335bbf7d754587ef9a60203a2185bdd
+  only-arches: [amd64]
+- type: file
+  url: ORGB_PLUGIN_URL(arm64,E131ReceiverPlugin,E131_PL_COMMIT)
+  checksum: 83d14247d4b0130eefc77f960d04eee0b58e26fcf6357dc85c0544326c8b4a41
+  only-arches: [arm64]
+
+- type: file
+  url: ORGB_PLUGIN_URL(amd64,HttpHookPlugin,HTTP_PL_COMMIT)
+  checksum: 6d9d0c7551c19d4226451f4cc339532a115e9f6728a8b42e3289efc00bda1ee1
+  only-arches: [amd64]
+- type: file
+  url: ORGB_PLUGIN_URL(arm64,HttpHookPlugin,HTTP_PL_COMMIT)
+  checksum: e132891bef9f20285778a35f03440886370f37fdad89b0461d34121b38022af3
+  only-arches: [arm64]
+
+- type: file
+  url: ORGB_PLUGIN_URL(amd64,SchedulerPlugin,SCHEDULER_PL_COMMIT)
+  checksum: 243ee9f5cd8d63ea4097d14124b156e59ef7143931999317d8dd5642f1b0a7e8
+  only-arches: [amd64]
+- type: file
+  url: ORGB_PLUGIN_URL(arm64,SchedulerPlugin,SCHEDULER_PL_COMMIT)
+  checksum: f2a779d8e1eb95e7f62d0d0cb37572724159bffbe69498415363708aeecdb956
+  only-arches: [arm64]
+
 commands:
   - ARCH=$(dpkg --print-architecture)
-  - apt-get install -y -qq --no-install-recommends /sources/openrgb-install/openrgb_@@ORGB_VERSION@@_${ARCH}_@@ORGB_RELEASE_DISTRO@@_@@OPENRGB_COMMIT/openrgb-install.deb libhidapi-hidraw0 libhidapi-libusb0 /sources/openrgb-install/libhidapi-hotplug-hidraw0_0.15.0-1_trixie_${ARCH}/openrgb-install.deb /sources/openrgb-install/libhidapi-hotplug-libusb0_0.15.0-1_trixie_${ARCH}/openrgb-install.deb
+  - apt-get install -y -qq --no-install-recommends /sources/openrgb-install/openrgb_@@ORGB_VERSION@@_${ARCH}_@@ORGB_RELEASE_DISTRO@@_@@OPENRGB_COMMIT/openrgb-install.deb libhidapi-hidraw0 libhidapi-libusb0 /sources/openrgb-install/libhidapi-hotplug-hidraw0_0.15.0-1_trixie_${ARCH}/openrgb-install.deb /sources/openrgb-install/libhidapi-hotplug-libusb0_0.15.0-1_trixie_${ARCH}/openrgb-install.deb ORGB_PLUGIN_PKG(EffectsPlugin,EFFECTS_PL_COMMIT) ORGB_PLUGIN_PKG(VisualMapPlugin,VISUALMAP_PL_COMMIT) ORGB_PLUGIN_PKG(HardwareSyncPlugin,HARDWARESYNC_PL_COMMIT) ORGB_PLUGIN_PKG(E131ReceiverPlugin,E131_PL_COMMIT) ORGB_PLUGIN_PKG(HttpHookPlugin,HTTP_PL_COMMIT) ORGB_PLUGIN_PKG(SchedulerPlugin,SCHEDULER_PL_COMMIT)
+
 
 modules:
 - name: openrgb-install-deps
@@ -60,86 +118,3 @@ modules:
   sources:
     - packages:
       - i2c-tools
-
-- name: openrgb-install-plugins
-  type: shell
-  sources:
-    COMMENT EffectsPlugin
-    - type: file
-      _COMMENT(https://codeberg.org/OpenRGB/OpenRGBEffectsPlugin/releases/download/release_1.0/OpenRGBEffectsPlugin_1.0_Trixie_amd64_0e0f1b4.deb)
-      url: ORGB_PLUGIN_URL(amd64,EffectsPlugin,EFFECTS_PL_COMMIT)
-      checksum: d5c6b587bafe89eab419e692c5ab59ea6723dfa110c307c0e6942563fcae5d83
-      only-arches: [amd64]
-    - type: file
-      url: ORGB_PLUGIN_URL(arm64,EffectsPlugin,EFFECTS_PL_COMMIT)
-      checksum: 3426108849c7f9e666eb697b2d9111899b62a9b02fc3828f99e465e779da1b36
-      only-arches: [arm64]
-
-    COMMENT VisualMapPlugin
-    - type: file
-      _COMMENT(https://codeberg.org/OpenRGB/OpenRGBVisualMapPlugin/releases/download/release_1.0/OpenRGBVisualMapPlugin_1.0_Trixie_amd64_1dde279.deb)
-      url: ORGB_PLUGIN_URL(amd64,VisualMapPlugin,VISUALMAP_PL_COMMIT)
-      checksum: d29b67a87b1cc9da24e1698de95cdb3babcac65b52f488a32d11a6bfbfb6d322
-      only-arches: [amd64]
-    - type: file
-      url: ORGB_PLUGIN_URL(arm64,VisualMapPlugin,VISUALMAP_PL_COMMIT)
-      checksum: 287b08ced358e0f02e86524da873c64743f454053a8f8b15e985772c903981a1
-      only-arches: [arm64]
-
-    COMMENT HardwareSyncPlugin
-    - type: file
-      _COMMENT(https://codeberg.org/OpenRGB/OpenRGBHardwareSyncPlugin/releases/download/release_1.0/OpenRGBHardwareSyncPlugin_1.0_Trixie_amd64_d999417.deb)
-      url: ORGB_PLUGIN_URL(amd64,HardwareSyncPlugin,HARDWARESYNC_PL_COMMIT)
-      checksum: 9dfa051dd4990da6ebf409d4fa16f1e5656a70f7280c445260635c7fb9362d54
-      only-arches: [amd64]
-    - type: file
-      url: ORGB_PLUGIN_URL(arm64,HardwareSyncPlugin,HARDWARESYNC_PL_COMMIT)
-      checksum: 2d582188141fc9ffab9ca7f1824f1635ab830787e2dea3171b2218cec8678a54
-      only-arches: [arm64]
-
-    COMMENT E131ReceiverPlugin
-    - type: file
-      _COMMENT(https://codeberg.org/OpenRGB/OpenRGBE131ReceiverPlugin/releases/download/release_1.0/OpenRGBE131ReceiverPlugin_1.0_Trixie_amd64_4900d20.deb)
-      url: ORGB_PLUGIN_URL(amd64,E131ReceiverPlugin,E131_PL_COMMIT)
-      checksum: 78f5e132a1b6febaa4c285e9c7ee03223335bbf7d754587ef9a60203a2185bdd
-      only-arches: [amd64]
-    - type: file
-      url: ORGB_PLUGIN_URL(arm64,E131ReceiverPlugin,E131_PL_COMMIT)
-      checksum: 83d14247d4b0130eefc77f960d04eee0b58e26fcf6357dc85c0544326c8b4a41
-      only-arches: [arm64]
-
-    COMMENT HttpHookPlugin
-    - type: file
-      _COMMENT(https://codeberg.org/OpenRGB/OpenRGBHttpHookPlugin/releases/download/release_1.0/OpenRGBHttpHookPlugin_1.0_Trixie_amd64_4a98997.deb)
-      url: ORGB_PLUGIN_URL(amd64,HttpHookPlugin,HTTP_PL_COMMIT)
-      checksum: 6d9d0c7551c19d4226451f4cc339532a115e9f6728a8b42e3289efc00bda1ee1
-      only-arches: [amd64]
-    - type: file
-      url: ORGB_PLUGIN_URL(arm64,HttpHookPlugin,HTTP_PL_COMMIT)
-      checksum: e132891bef9f20285778a35f03440886370f37fdad89b0461d34121b38022af3
-      only-arches: [arm64]
-
-    COMMENT SchedulerPlugin
-    - type: file
-      _COMMENT(https://codeberg.org/OpenRGB/OpenRGBSchedulerPlugin/releases/download/release_1.0/OpenRGBSchedulerPlugin_1.0_Trixie_amd64_475d53e.deb)
-      url: ORGB_PLUGIN_URL(amd64,SchedulerPlugin,SCHEDULER_PL_COMMIT)
-      checksum: 243ee9f5cd8d63ea4097d14124b156e59ef7143931999317d8dd5642f1b0a7e8
-      only-arches: [amd64]
-    - type: file
-      url: ORGB_PLUGIN_URL(arm64,SchedulerPlugin,SCHEDULER_PL_COMMIT)
-      checksum: f2a779d8e1eb95e7f62d0d0cb37572724159bffbe69498415363708aeecdb956
-      only-arches: [arm64]
-
-#define PLUGIN_APT_INSTALL(ORGB_PLUGIN, ORGB_PLUGIN_COMMIT) apt install -y -qq --no-install-recommends /sources/openrgb-install-plugins/OpenRGB@@ORGB_PLUGIN@@_@@ORGB_VERSION@@_Trixie_${ARCH}_@@ORGB_PLUGIN_COMMIT/openrgb-install-plugins.deb
-
-  commands:
-    - mkdir -p /usr/lib/openrgb
-    - mkdir -p /usr/lib/openrgb/plugins
-    - rm -rf "/usr/lib/openrgb/plugins/*"
-    - ARCH=$(dpkg --print-architecture)
-    - PLUGIN_APT_INSTALL(EffectsPlugin,EFFECTS_PL_COMMIT)
-    - PLUGIN_APT_INSTALL(VisualMapPlugin,VISUALMAP_PL_COMMIT)
-    - PLUGIN_APT_INSTALL(HardwareSyncPlugin,HARDWARESYNC_PL_COMMIT)
-    - PLUGIN_APT_INSTALL(E131ReceiverPlugin,E131_PL_COMMIT)
-    - PLUGIN_APT_INSTALL(HttpHookPlugin,HTTP_PL_COMMIT)
-    - PLUGIN_APT_INSTALL(SchedulerPlugin,SCHEDULER_PL_COMMIT)
