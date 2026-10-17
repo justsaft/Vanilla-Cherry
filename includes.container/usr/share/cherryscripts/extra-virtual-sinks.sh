@@ -1,14 +1,25 @@
 #!/bin/bash
+# Extra virtual sinks. They use the same format, rate and channel layout as
+# the sinks in /etc/pipewire/pipewire.conf.d/10-sinks.conf.
 
-pactl load-module module-null-sink sink_name=aux5 sink_properties="device.description='Aux 5'"
-pactl load-module module-null-sink sink_name=aux6 sink_properties="device.description='Aux 6'"
-pactl load-module module-null-sink sink_name=aux7 sink_properties="device.description='Aux 7'"
-pactl load-module module-null-sink sink_name=aux8 sink_properties="device.description='Aux 8'"
-pactl load-module module-null-sink sink_name=sfx sink_properties="device.description='SFX'"
-pactl load-module module-null-sink sink_name=browser2 sink_properties="device.description='Secondary Browser'"
-pactl load-module module-null-sink sink_name=streammusic sink_properties="device.description='Stream Music'"
-pactl load-module module-null-sink sink_name=streammonitor sink_properties="device.description='Stream Monitor'"
-pactl load-module module-null-sink sink_name=guestmaster sink_properties="device.description='Guest Master'"
+create_sink() {
+    local name="$1"
+    local description="$2"
+    pactl load-module module-null-sink \
+        sink_name="$name" \
+        format=float32le \
+        rate=48000 \
+        channels=2 \
+        channel_map=front-left,front-right \
+        sink_properties="device.description='$description' monitor.passthrough=true"
+}
 
-
-#pw-cli create-object pipewire.null-audio-sink "node.name=MyNullSink" "media.class=Audio/Sink" "audio.position=[FL,FR]"
+create_sink aux5          "Aux 5"
+create_sink aux6          "Aux 6"
+create_sink aux7          "Aux 7"
+create_sink aux8          "Aux 8"
+create_sink sfx           "SFX"
+create_sink browser2      "Secondary Browser"
+create_sink streammusic   "Stream Music"
+create_sink streammonitor "Stream Monitor"
+create_sink guestmaster   "Guest Master"
