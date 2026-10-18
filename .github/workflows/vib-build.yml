@@ -15,6 +15,13 @@ on:
         description: Extra cpp flags for scripts/gen-recipe.sh (e.g. -DNV580)
         type: string
         default: ''
+    secrets:
+      MOK_KEY:
+        description: PEM private key that signs the NVIDIA kernel modules
+        required: false
+      MOK_CERT:
+        description: PEM certificate that matches MOK_KEY, enrolled by users
+        required: false
 
 env:
   CUSTOM_IMAGE_NAME: ${{ inputs.image }}
@@ -178,6 +185,32 @@ jobs:
         plugins: 'Vanilla-OS/vib-fsguard:v1.6.1'
         output: 'Containerfile-${{ inputs.name }}'
 
+    # Signs the NVIDIA modules when the image has them. The private key only
+    # reaches the build as a BuildKit secret, so it never ends up in a layer.
+    # Pushes without both secrets fail so that unsigned images are not published.
+    - name: Prepare NVIDIA module signing
+      id: signing
+      if: ${{ !contains(inputs.defines, 'NOVIDIA') }}
+      env:
+        MOK_KEY: ${{ secrets.MOK_KEY }}
+        MOK_CERT: ${{ secrets.MOK_CERT }}
+        PUSHING: ${{ github.event_name != 'pull_request' }}
+      run: |
+        if [ -z "$MOK_KEY" ] || [ -z "$MOK_CERT" ]; then
+          if [ "$PUSHING" = true ]; then
+            echo "::error::Secrets MOK_KEY and MOK_CERT are required to publish an image with NVIDIA modules"
+            exit 1
+          fi
+          echo "::warning::MOK_KEY or MOK_CERT is not available, this build leaves the NVIDIA modules unsigned"
+          exit 0
+        fi
+        umask 077
+        printf '%s\n' "$MOK_KEY" > "$RUNNER_TEMP/mok_key"
+        printf '%s\n' "$MOK_CERT" > "$RUNNER_TEMP/mok_cert"
+        fingerprint="$(openssl x509 -in "$RUNNER_TEMP/mok_cert" -noout -fingerprint -sha256 | cut -d= -f2)"
+        sh scripts/inject-build-secrets.sh "Containerfile-${{ inputs.name }}" "$fingerprint"
+        echo "secret_files=mok_key=$RUNNER_TEMP/mok_key,mok_cert=$RUNNER_TEMP/mok_cert" >> "$GITHUB_OUTPUT"
+
     - uses: actions/upload-artifact@v7
       with:
         name: Containerfile-${{ inputs.name }}-${{ matrix.arch }}
@@ -222,12 +255,17 @@ jobs:
       with:
         context: .
         file: Containerfile-${{ inputs.name }}
+        secret-files: ${{ steps.signing.outputs.secret_files }}
         labels: ${{ steps.meta.outputs.labels }}
         cache-from: type=gha,scope=${{ inputs.name }}-${{ matrix.arch }}
         cache-to: type=gha,mode=max,scope=${{ inputs.name }}-${{ matrix.arch }}
         platforms: linux/${{ matrix.arch }}
         provenance: false
         outputs: type=image,name=${{ env.IMAGE_URL }},push-by-digest=true,name-canonical=true,push=${{ github.event_name != 'pull_request' }}
+
+    - name: Remove signing secrets
+      if: ${{ always() }}
+      run: rm -f "$RUNNER_TEMP/mok_key" "$RUNNER_TEMP/mok_cert"
 
     - name: Attest pushed image
       if: ${{ github.event_name != 'pull_request' }}
