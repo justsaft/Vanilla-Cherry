@@ -18,9 +18,9 @@
 
 #define ORGB_PLUGIN_URL(ARCH, ORGB_PLUGIN_NAME, ORGB_PLUGIN_COMMIT) ORGB_BASE_URL@@ORGB_PLUGIN_NAME@@/ORGB_RELEASE_URL@@_@@ORGB_VERSION/OpenRGB@@ORGB_PLUGIN_NAME@@_@@ORGB_VERSION@@_@@Trixie@@_@@ARCH@@_@@ORGB_PLUGIN_COMMIT@@.deb
 
-#define PLUGIN_APT_INSTALL(ORGB_PLUGIN, ORGB_PLUGIN_COMMIT) apt install -y -qq --no-install-recommends /sources/openrgb-install-plugins/OpenRGB@@ORGB_PLUGIN@@_@@ORGB_VERSION@@_Trixie_${ARCH}_@@ORGB_PLUGIN_COMMIT/openrgb-install-plugins.deb
+#define PLUGIN_APT_INSTALL(ORGB_PLUGIN, ORGB_PLUGIN_COMMIT) apt install -y -qq --no-install-recommends /sources/openrgb-install/OpenRGB@@ORGB_PLUGIN@@_@@ORGB_VERSION@@_Trixie_${ARCH}_@@ORGB_PLUGIN_COMMIT/openrgb-install-plugins.deb
 
-#define ORGB_PLUGIN_PKG(ORGB_PLUGIN, ORGB_PLUGIN_COMMIT) /sources/openrgb-install-plugins/OpenRGB@@ORGB_PLUGIN@@_@@ORGB_VERSION@@_Trixie_${ARCH}_@@ORGB_PLUGIN_COMMIT/openrgb-install.deb
+#define ORGB_PLUGIN_PKG(ORGB_PLUGIN, ORGB_PLUGIN_COMMIT) /sources/openrgb-install/OpenRGB@@ORGB_PLUGIN@@_@@ORGB_VERSION@@_Trixie_${ARCH}_@@ORGB_PLUGIN_COMMIT/openrgb-install.deb
 
 
 name: openrgb-install
