@@ -28,6 +28,9 @@ jobs:
       attestations: write # To create and write attestations
       id-token: write # Additional permissions for the persistence of the attestations
     uses: ./.github/workflows/vib-build.yml
+    secrets:
+      MOK_KEY: ${{ secrets.MOK_KEY }}
+      MOK_CERT: ${{ secrets.MOK_CERT }}
     with:
       name: ${{ matrix.variant.name }}
       image: ${{ matrix.variant.image }}
