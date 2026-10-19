@@ -6,7 +6,3 @@ sources:
     - sshfs
     - linux-perf
     - davfs2
-    - brightnessctl
-    #- testdisk
-
-# pulseaudio-utils is needed for the Audio quick settings panel GS extension

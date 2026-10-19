@@ -61,7 +61,7 @@ stages:
 #if defined(BUILD_WITH_EVREMAP)
       - modules/604-evremap.yml
 #else
-      - modules/605-keyd.yml
+      - modules/604-keyd.yml
 #endif
 
       - modules/620-gaming.yml

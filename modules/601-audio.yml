@@ -13,3 +13,5 @@ sources:
     - lsp-plugins-vst3
     - lsp-plugins-lv2
     - lsp-plugins-vst
+
+# pulseaudio-utils is needed for the Audio quick settings panel GS extension

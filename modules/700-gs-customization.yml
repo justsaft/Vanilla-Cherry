@@ -41,3 +41,9 @@ modules:
         - qgnomeplatform-qt6
         - adwaita-qt
         - adwaita-qt6
+
+  - name: gs-extension-tooling
+    type: apt
+    sources:
+      - packages:
+        - brightnessctl
