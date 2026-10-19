@@ -1,13 +1,21 @@
-name: virt-packages
-type: apt
-sources:
-  - packages:
-    - qemu-system-x86
-    - qemu-utils
-    - libvirt-daemon-system
-    - libvirt-clients
-    - dnsmasq-base
-    - bridge-utils
-    - ovmf
-    - swtpm
-    - swtpm-tools
+name: virt-qemu-system
+type: shell
+commands:
+  - ARCH=$(dpkg --print-architecture)
+  - apt install -qq -y --no-install-recommends qemu-system-${ARCH:0:3}
+
+modules:
+- name: virt-packages
+  type: apt
+  sources:
+    - packages:
+      - qemu-system-common
+      - qemu-system-misc
+      - qemu-utils
+      - libvirt-daemon-system
+      - libvirt-clients
+      - dnsmasq-base
+      - bridge-utils
+      - ovmf
+      - swtpm
+      - swtpm-tools
