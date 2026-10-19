@@ -1,0 +1,13 @@
+name: virt-packages
+type: apt
+sources:
+  - packages:
+    - qemu-system-x86
+    - qemu-utils
+    - libvirt-daemon-system
+    - libvirt-clients
+    - dnsmasq-base
+    - bridge-utils
+    - ovmf
+    - swtpm
+    - swtpm-tools
