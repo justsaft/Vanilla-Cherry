@@ -55,6 +55,9 @@ stages:
 #else
       - gh:vanilla-os/nvidia-exp-image:dev:modules/50-nvidia-driver-install.yml
 #endif
+#if !defined(NOVIDIA)
+      - modules/53-nvidia-module-signing.yml
+#endif
       - modules/600-utils.yml
       - modules/601-audio.yml
 

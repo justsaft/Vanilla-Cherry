@@ -1,0 +1,40 @@
+#!/bin/bash
+# Enrolls the image's module signing certificate so Secure Boot accepts the NVIDIA modules.
+# Run once per machine. The enrollment lives in firmware and survives image updates.
+set -euo pipefail
+
+cert=/usr/share/cherryscripts/mok.der
+
+if [ ! -f "$cert" ]; then
+    echo "This image was built without a module signing certificate, nothing to enroll." >&2
+    exit 1
+fi
+
+if [ "$(id -u)" -ne 0 ]; then
+    for elevate in pkexec run0; do
+        if command -v "$elevate" > /dev/null; then
+            exec "$elevate" "$(readlink -f "$0")" "$@"
+        fi
+    done
+    echo "Run this command as root." >&2
+    exit 1
+fi
+
+if mokutil --sb-state 2>&1 | grep -qi 'SecureBoot disabled'; then
+    echo "Secure Boot is disabled, no enrollment needed."
+    exit 0
+fi
+
+if mokutil --test-key "$cert" | grep -q 'already enrolled'; then
+    echo "The certificate is already enrolled."
+    exit 0
+fi
+
+echo "Certificate fingerprint:"
+openssl x509 -inform DER -in "$cert" -noout -fingerprint -sha256
+echo
+echo "mokutil asks for a one-time password. You type it again after the reboot."
+mokutil --import "$cert"
+echo
+echo "Reboot now. In the blue MOK manager choose 'Enroll MOK', then 'Continue',"
+echo "confirm with 'Yes' and enter the password you just set."

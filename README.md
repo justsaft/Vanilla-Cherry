@@ -61,6 +61,39 @@ Two things to watch when editing `recipe.yml`:
 - A slash followed by a star opens a C comment. Quote globs such as `"/tmp/*"`.
 - A backslash at the end of a line joins it with the next line.
 
+## Secure Boot
+
+The NVIDIA modules are built by DKMS during the image build, so Secure Boot rejects them unless they are signed with a key that the machine trusts. CI signs them with one key for every user, and each machine enrolls the matching certificate once.
+
+On a machine with Secure Boot enabled, run this once and follow the prompts, which end in the blue MOK manager after a reboot:
+
+```sh
+cherry-enroll-mok
+```
+
+The enrollment lives in firmware, so image updates and ABRoot rollbacks keep working as long as the signing key stays the same. A new key means everyone enrolls again.
+
+### Setting up the signing key
+
+Generate the key once and keep the private half out of the repository:
+
+```sh
+openssl req -new -x509 -newkey rsa:2048 -nodes -days 36500 \
+  -keyout mok.key -out mok.pem \
+  -subj "/CN=vanilla-cherry module signing/" \
+  -addext "basicConstraints=critical,CA:FALSE" \
+  -addext "keyUsage=digitalSignature" \
+  -addext "extendedKeyUsage=codeSigning"
+gh secret set MOK_KEY < mok.key
+gh secret set MOK_CERT < mok.pem
+```
+
+CI hands both to the build as BuildKit secrets, rebuilds the NVIDIA modules with them and fails the build if any module is not signed by that certificate. The public certificate ends up in the image as `/usr/share/cherryscripts/mok.der`.
+
+- Pushes and tag builds fail without the secrets, so an unsigned image is never published.
+- Pull requests without the secrets, such as from forks, build with unsigned modules.
+- The `novidia` image has no modules to sign.
+
 ## Building locally
 
 ```sh

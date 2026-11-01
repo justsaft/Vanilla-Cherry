@@ -1,0 +1,8 @@
+name: nvidia-module-signing
+type: shell
+commands:
+  # scripts/inject-build-secrets.sh looks for this token to add the secret mounts to this RUN.
+  - echo cherry-needs-secrets
+  - apt-get install -y -qq --no-install-recommends openssl mokutil
+  - /usr/share/cherryscripts/sign-nvidia-modules.sh
+  - rm -f /usr/share/cherryscripts/sign-nvidia-modules.sh
