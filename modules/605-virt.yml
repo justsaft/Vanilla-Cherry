@@ -2,7 +2,9 @@ name: virt-qemu-system
 type: shell
 commands:
   - ARCH=$(dpkg --print-architecture)
-  - apt install -qq -y --no-install-recommends qemu-system-${ARCH:0:3}
+  # Debian names the packages after the CPU family, not the dpkg architecture
+  - case "$ARCH" in amd64) QEMU_ARCH=x86 ;; arm64) QEMU_ARCH=arm ;; *) echo "unsupported architecture $ARCH" >&2; exit 1 ;; esac
+  - apt install -qq -y --no-install-recommends qemu-system-${QEMU_ARCH}
 
 modules:
 - name: virt-packages
