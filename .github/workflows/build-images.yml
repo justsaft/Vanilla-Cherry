@@ -7,6 +7,12 @@ on:
       - "*"
   workflow_dispatch:
   pull_request:
+  schedule:
+    # Tuesdays 06:00 UTC, after vos-ci-building has refreshed its builder image
+    # (Mon 02:00) and its prebuilt releases (Mon 06:00; GitHub often starts cron runs hours late). Scheduled
+    # runs only build when the base image changed (see check_update in
+    # vib-build.yml); every other trigger always builds.
+    - cron: '0 6 * * 2'
 
 jobs:
   image:
@@ -24,6 +30,7 @@ jobs:
     # A called workflow can only use permissions granted here.
     permissions:
       contents: write # Allow actions to create a digest
+      actions: read # find the last successful run and download its digest artifact
       packages: write # Allow pushing images to GHCR
       attestations: write # To create and write attestations
       id-token: write # Additional permissions for the persistence of the attestations
