@@ -63,7 +63,10 @@ stages:
 #else
       - modules/604-keyd.yml
 #endif
+
+#if defined(BUILD_WITH_VIRT)
       - modules/605-virt.yml
+#endif
 
       - modules/620-gaming.yml
       - PREPROCESS(modules/624-openrgb-v2.yml)
