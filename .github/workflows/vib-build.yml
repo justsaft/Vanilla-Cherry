@@ -175,7 +175,7 @@ jobs:
           fi
         fi
 
-    - uses: vanilla-os/vib-gh-action@main
+    - uses: vanilla-os/vib-gh-action@v1.1.0
       with:
         recipe: ${{ env.RECIPE }}
         plugins: 'Vanilla-OS/vib-fsguard:v1.6.1'
