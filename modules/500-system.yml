@@ -1,0 +1,6 @@
+name: system
+type: apt
+sources:
+  - packages:
+    - xfsprogs
+    noRecommends: true
